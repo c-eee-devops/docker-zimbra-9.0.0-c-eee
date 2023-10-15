@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-MAINTAINER Sascha Falk <sascha@falk-online.eu>
+FROM ubuntu:20.04
+MAINTAINER Chinthaka  Deshapriya <chinthaka.deshapriya@c-eee.org>
 
 # Update image and install additional packages
 # -----------------------------------------------------------------------------

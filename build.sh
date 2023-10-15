@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t griffinplus/zimbra .
+docker build -t c-eee.org/zimbra .
