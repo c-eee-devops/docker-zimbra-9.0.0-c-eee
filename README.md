@@ -1,12 +1,6 @@
 
 # Docker Image with Zimbra 9.0.0 C-EEE
 
-[![Build Status](https://dev.azure.com/griffinplus/Docker%20Images/_apis/build/status/14?branchName=master)](https://dev.azure.com/griffinplus/Docker%20Images/_build/latest?definitionId=14&branchName=master)
-[![Docker Pulls](https://img.shields.io/docker/pulls/griffinplus/zimbra.svg)](https://hub.docker.com/r/griffinplus/zimbra)
-[![Github Stars](https://img.shields.io/github/stars/griffinplus/docker-zimbra.svg?label=github%20%E2%98%85)](https://github.com/griffinplus/docker-zimbra)
-[![Github Stars](https://img.shields.io/github/contributors/griffinplus/docker-zimbra.svg)](https://github.com/griffinplus/docker-zimbra) 
-[![Github Forks](https://img.shields.io/github/forks/griffinplus/docker-zimbra.svg?label=github%20forks)](https://github.com/griffinplus/docker-zimbra)
-
 ## Overview
 
 This image contains everything needed to download, setup and run the [Zimbra](https://www.zimbra.com/) collaboration suite. The image itself does not contain Zimbra. On the first start, the container installs a minimalistic Ubuntu 18.04 LTS onto a docker volume. This installation serves as the root filesystem for Zimbra, so Zimbra can work with the environment and everything is kept consistent and persistent - even if the container is updated. This also implies that pulling a new image version **does not** automatically update the Ubuntu installation on the docker volume. To reduce the chance of security issues, the container configures Ubuntu's *unattended upgrades* package to install official updates automatically. 
