@@ -3,7 +3,7 @@
 set -e
 
 ZIMBRA_DOWNLOAD_URL="https://gitlab.com/c-eee.org/zimbra_c-eee/-/blob/4dacf013d91f2fa2c76f7247df6d0a7bfc71b95d/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz"
-ZIMBRA_DOWNLOAD_HASH="0967133cb88b17bef6099b11c4995c02"
+ZIMBRA_DOWNLOAD_HASH="c9a21046dcb0e4d9dc1a5618ec48012b6c8c5aa329bf4112192d05f8a7271bd1"
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 # abort, if the shell is not attached to a terminal
