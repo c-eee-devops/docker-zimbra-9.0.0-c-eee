@@ -10,9 +10,85 @@ This image contains everything required to download, install, and run the [Zimbr
 
 3. The container supports IPv6 and has a global IPv6 address. It also has packet filtering configured to prevent common attacks and access to non-public ports.
 
-## Usage
+## Deploying Zimbra on Docker Host
 
-Usage scenarios on how to deploy the Zimbra container on a *Docker* host or on *Kubernetes* can be found in the [wiki](https://github.com/GriffinPlus/docker-zimbra/wiki).
+### Overview
+
+This section explains how to start the Zimbra container on a standard Docker host.
+
+### Step 1: - Configuring a User-Defined Network
+
+- If you don't already have a user-defined network for public services, you can establish a simple bridge network (named `frontend` in the example below) and define the subnets from which Docker will assign IP addresses to containers.
+
+- As you will most likely only have one IPv4 address for your server, you should select a subnet from the site-local ranges (`10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16`).
+
+- Docker handles connecting published services to the server's public IPv4 address.
+
+- Any IPv6-enabled server nowadays has at least a /64 subnet assigned, thus any single container can have its own IPv6 address without the need for network address translation (NAT). As a result, you should select an IPv6 subnet that is part of the subnet that your server is assigned to.
+  
+- Docker advises using a subnet of at least /80 so that it can assign IP addresses by ORing the container's (virtual) MAC address with the provided subnet.
+
+```bash
+docker network create -d bridge \
+  --subnet 192.168.0.0/24 \
+  --subnet 2001:xxxx:xxxx:xxxx::/80 \
+  --ipv6 \
+  frontend
+```
+### Step 2 - Create a Volume for the Zimbra Container
+
+The zimbra container installs a minimalistic Ubuntu 20.04 LTS and Zimbra onto a docker volume. You can create a named volume using the following command:
+
+```bash
+docker volume create zimbra-data
+````
+
+### Step 3 - Install Zimbra
+
+- Before installing Zimbra, you should ensure that your DNS contains the following records:
+
+- An A record mapping the FQDN of the Zimbra container to the public `IPv4` address of the docker host (e.g. `mail.c-eee.org`), the docker host maps the service ports to the container.
+
+- An  `AAAA` record mapping the `FQDN` of the Zimbra container to its public `IPv6` address (e.g. `mail.c-eee.org`)
+
+- A `MX` record with the hostname of the Zimbra container (as specified by the `A/AAAA` records)
+
+- The command below will install Zimbra on the newly created volume.
+
+- You will be able to configure Zimbra utilizing the menu-driven installation script. 
+
+- You can install all features except the `DNS` Cache, which will interfere with the container's  `DNS` cache. 
+
+- Please replace the hostname in the  `A/AAAA` DNS entries with the hostname you selected.
+
+- Because the `IPv4` address through which the container would be publicly accessible is really assigned to the docker host, the installation process will complain about a DNS problem. Ignore the warning and continue. It will eventually function.
+
+```bash
+docker run -it \
+           --rm \
+           --ip6=2001:xxxx:xxxx:xxxx::2 \
+           --network frontend \
+           --hostname mail.c-eee.org \
+           -p 25:25 \
+           -p 80:80 \
+           -p 110:110 \
+           -p 143:143 \
+           -p 443:443 \
+           -p 465:465 \
+           -p 587:587 \
+           -p 993:993 \
+           -p 995:995 \
+           -p 5222:5222 \
+           -p 5223:5223 \
+           -p 7071:7071 \
+           --volume zimbra-data:/data \
+           --cap-add NET_ADMIN \
+           --cap-add SYS_ADMIN \
+           --cap-add SYS_PTRACE \
+           --security-opt apparmor=unconfined \
+           c-eee.org/zimbra \
+           run-and-enter
+```
 
 ## Maintenance
 
