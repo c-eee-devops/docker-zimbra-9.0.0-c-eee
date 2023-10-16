@@ -5,9 +5,11 @@
 
 This image contains everything required to download, install, and run the [Zimbra](https://www.zimbra.com/) collaboration suite [FOSS]() Edition developed by [C-EEE.ORG](https://c-eee.org) from source code accessible at [zm-build](https://github.com/Zimbra/zm-build) at [GitHub](https://github.com/). Zimbra is not present in the image. 
 
-On the first start, the container installs a minimalistic Ubuntu 18.04 LTS onto a docker volume. This installation serves as the root filesystem for Zimbra, so Zimbra can work with the environment and everything is kept consistent and persistent - even if the container is updated. This also implies that pulling a new image version **does not** automatically update the Ubuntu installation on the docker volume. To reduce the chance of security issues, the container configures Ubuntu's *unattended upgrades* package to install official updates automatically. 
+1. The container initially installs a basic Ubuntu 20.04 LTS into a docker volume. This installation serves as Zimbra's root filesystem, allowing Zimbra to interact with the environment while keeping everything consistent and permanent - even if the container is upgraded. This also indicates that downloading a new image version does not update the Ubuntu installation on the docker volume.
+  
+2. To decrease the possibility of security vulnerabilities, the container configures Ubuntu's *unattended upgrades* package to automatically install official updates. To find out how and why should you do it, [learn more here](https://www.kolide.com/features/checks/ubuntu-unattended-upgrades).
 
-The container supports IPv6 with a global IPv6 address and configures packet filtering to block common attacks and access to non-public ports.
+3. The container supports IPv6 with a global IPv6 address and configures packet filtering to block common attacks and access to non-public ports.
 
 ## Usage
 
