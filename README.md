@@ -1,9 +1,11 @@
 
-# Docker Image with Zimbra 9.0.0 C-EEE
+# Docker Image with Zimbra 9.0.0  OSE by C-EEE.ORG
 
 ## Overview
 
-This image contains everything needed to download, setup and run the [Zimbra](https://www.zimbra.com/) collaboration suite. The image itself does not contain Zimbra. On the first start, the container installs a minimalistic Ubuntu 18.04 LTS onto a docker volume. This installation serves as the root filesystem for Zimbra, so Zimbra can work with the environment and everything is kept consistent and persistent - even if the container is updated. This also implies that pulling a new image version **does not** automatically update the Ubuntu installation on the docker volume. To reduce the chance of security issues, the container configures Ubuntu's *unattended upgrades* package to install official updates automatically. 
+This image contains everything required to download, install, and run the [Zimbra](https://www.zimbra.com/) collaboration suite [FOSS]() Edition developed by [C-EEE.ORG](https://c-eee.org) from source code accessible at [zm-build](https://github.com/Zimbra/zm-build) at [GitHub](https://github.com/). Zimbra is not present in the image. 
+
+On the first start, the container installs a minimalistic Ubuntu 18.04 LTS onto a docker volume. This installation serves as the root filesystem for Zimbra, so Zimbra can work with the environment and everything is kept consistent and persistent - even if the container is updated. This also implies that pulling a new image version **does not** automatically update the Ubuntu installation on the docker volume. To reduce the chance of security issues, the container configures Ubuntu's *unattended upgrades* package to install official updates automatically. 
 
 The container supports IPv6 with a global IPv6 address and configures packet filtering to block common attacks and access to non-public ports.
 
