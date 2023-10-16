@@ -18,36 +18,44 @@ Usage scenarios on how to deploy the Zimbra container on a *Docker* host or on *
 
 1. If the associated volume is empty, the container installs a full Ubuntu 20.04 LTS installation along with Zimbra. This also implies that executing an updated docker image does not update the installation on the disk.
    
-2.  The installation is kept up to date because Ubuntu's *unattended upgrades* program automatically installs official updates. If you do not want the installation to be automatically updated,
+2.  The installation is kept up to date because Ubuntu's `unattended upgrades` program automatically installs official updates. If you do not want the installation to be automatically updated,
    
-3.  To stop unattended upgrades after the installation by setting, in case if you don't want to have it some reason. 
+3.  To stop unattended upgrades after the installation by setting, in case if you don't want to have it some reason.
 
+- Open the configuration file:
+
+```bash
+ nano /etc/apt/apt.conf.d/20auto-upgrades
+```
+
+- Add the following configuration parameter:
+  
  ```bash
- 'APT::Periodic::Unattended-Upgrade "0";' in '/etc/apt/apt.conf.d/20auto-upgrades'.
+ APT::Periodic::Unattended-Upgrade "0"; 
  ```
 
-To install updates manually, you need to get a shell in the container using the following command:
+4. To manually install updates, launch a shell in the container using the following command:
 
-```
+```bash 
 docker exec -it zimbra /bin/bash
 ```
 
-The entire Ubuntu installation is kept in `/data`, so you need to *chroot* to dive into the environment:
+5.  The entire Ubuntu installation is kept in `/data`, so you need to `chroot` to dive into the environment:
 
-```
+```bash
 chroot /data /bin/bash
 ```
 
-At this point you can - with some restrictions - work with the installation as you would do with a regular Ubuntu installation. Some kernel calls are blocked by the docker's default *seccomp* profile, so you might need to adjust this. Furthermore *systemd* is not working, so you need to call init scripts directly to start/stop services.
+You can now deal with the installation as you would a conventional Ubuntu installation, with some limitations. Some kernel calls are restricted by the default `seccomp` profile in Docker, therefore you may need to alter this. Furthermore,`systemd` is broken, thus you must use init scripts to `start/stop` services.
 
-First of all you should keep the Ubuntu installation up-to-date calling the following commands regularly:
+5. First and foremost, you should keep your Ubuntu installation up to date by running the following tasks on a regular basis:
 
-```
+```bash
 apt-get update
 apt-get upgrade
 ```
 
-If a new Zimbra installation is available, you have to update it manually to ensure that customizations done since the initial setup are re-applied properly. A new image that would install a new version of Zimbra **WILL NOT** update an already existing installation.
+6. If a new Zimbra installation is available, you must manually update it to ensure that any adjustments made since the first setup are appropriately re-applied. A new image that installs a new version of Zimbra **WILL NOT** upgrade an existing installation.
 
 ## Security
 
