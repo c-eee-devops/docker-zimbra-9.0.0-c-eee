@@ -63,6 +63,12 @@ docker volume create zimbra-data
 
 - Because the `IPv4` address through which the container would be publicly accessible is really assigned to the docker host, the installation process will complain about a DNS problem. Ignore the warning and continue. It will eventually function.
 
+- Clone the reposotory to you Ubuntu 20.04 doker host
+
+```bash
+git clone https://github.com/ceeedevops/docker-zimbra-9.0.0-C-EEE.git
+```
+
 ```bash
 docker run -it \
            --rm \
