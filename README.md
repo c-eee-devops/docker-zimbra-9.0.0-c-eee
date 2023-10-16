@@ -90,6 +90,54 @@ docker run -it \
            run-and-enter
 ```
 
+- To function correctly, the container requires a few more characteristics. 
+
+- To configure network interfaces and the iptables firewall, the `NET_ADMIN` capability is required. 
+
+- The `SYS_ADMIN` capability is required to configure the chrooted environment in which Zimbra runs.
+
+- To for `rsyslog` to `start/stop` effectively, the `SYS_PTRAC`E capability is required.
+  
+- `AppArmor` protection must also be disabled in order to set up the `chrooted` environment.
+
+- The  `run-and-enter` command instructs the container to open a shell within the container at the end. 
+
+- You can also access the Ubuntu installation with Zimbra directly by typing `run-and-enter-zimbra`.
+
+- The default command is executed.
+
+- It simply starts a script that initializes the container and waits for the container to be closed before gracefully shutting down Zimbra (and related services).
+
+- Once the manual configuration is complete, you will most likely merely execute the container in the background with the `run` command:
+
+```bash
+docker run --name zimbra \ 
+           --detach \
+           --rm \
+           --ip6=2001:xxxx:xxxx:xxxx::2 \
+           --network frontend \
+           --hostname mail.c-eee.org \
+           -p 25:25 \
+           -p 80:80 \
+           -p 110:110 \
+           -p 143:143 \
+           -p 443:443 \
+           -p 465:465 \
+           -p 587:587 \
+           -p 993:993 \
+           -p 995:995 \
+           -p 5222:5222 \
+           -p 5223:5223 \
+           -p 7071:7071 \
+           --volume zimbra-data:/data \
+           --cap-add NET_ADMIN \
+           --cap-add SYS_ADMIN \
+           --cap-add SYS_PTRACE \
+           --security-opt apparmor=unconfined \
+           c-eee.org/zimbra \
+           run
+```
+
 ## Maintenance
 
 1. If the associated volume is empty, the container installs a full Ubuntu 20.04 LTS installation along with Zimbra. This also implies that executing an updated docker image does not update the installation on the disk.
