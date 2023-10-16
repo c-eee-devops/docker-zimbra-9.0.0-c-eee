@@ -2,7 +2,7 @@
 
 ## Overview
 
-This image contains everything required to download, install, and run the [Zimbra](https://www.zimbra.com/) collaboration suite [FOSS]() Edition developed by [C-EEE.ORG](https://c-eee.org) from source code accessible at [zm-build](https://github.com/Zimbra/zm-build) at [GitHub](https://github.com/). Zimbra is not present in the image. 
+This image contains everything required to download, install, and run the [Zimbra](https://www.zimbra.com/) collaboration suite [FOSS]() Edition built by [C-EEE.ORG](https://c-eee.org) from source code accessible at [zm-build](https://github.com/Zimbra/zm-build) at [GitHub](https://github.com/). Zimbra is not present in the image. 
 
 1. The container initially installs a basic Ubuntu 20.04 LTS into a docker volume. This installation serves as Zimbra's root filesystem, allowing Zimbra to interact with the environment while keeping everything consistent and permanent - even if the container is upgraded. This also indicates that downloading a new image version does not update the Ubuntu installation on the docker volume.
   
@@ -61,9 +61,19 @@ apt-get upgrade
 
 ### Transport Security (TLS)
 
-By default Zimbra generates a self-signed certificate for TLS. As self-signed certificates are not trusted web browsers will complain about it. To use a certificate issued by a trusted certification authority (CA), you can tell the container to set it in by providing the private key at `/data/app/tls/zimbra.key` and the certificate at `/data/app/tls/zimbra.crt`. The container keeps track of changes to the certificate file and re-configures Zimbra, if necessary. Therefore it is recommended to mount a volume with the key and the certificate at `/data/app/tls` and use it for exchanging the certificate. The certificate *should* contain the certificate chain up to the root certificate. If a certificate of an intermediate CA or root CA is missing, the container will try to download the missing certificates using the *Authority Information Access* extension (if available).
+- By default Zimbra generates a self-signed certificate for TLS. As self-signed certificates are not trusted web browsers will complain about it. To use a certificate issued by a trusted certification authority (CA)
 
-Furthermore 4096 bit DH parameters are generated improving the security level of the key exchange.
+- You can tell the container to set it in by providing the private key at `/data/app/tls/zimbra.key` and the certificate at `/data/app/tls/zimbra.crt`.
+
+- The container keeps track of changes to the certificate file and re-configures Zimbra, if necessary.
+
+- It is recommended to mount a volume with the key and the certificate at `/data/app/tls` and use it for exchanging the certificate.
+
+- The certificate *should* contain the certificate chain up to the root certificate.
+
+- If a certificate of an intermediate CA or root CA is missing, the container will try to download the missing certificates using the *Authority Information Access* extension (if available).
+
+- Furthermore 4096 bit DH parameters are generated improving the security level of the key exchange.
 
 #### HTTP Transport Security (HSTS)
 
