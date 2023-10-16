@@ -61,9 +61,9 @@ apt-get upgrade
 
 ### Transport Security (TLS)
 
-- By default Zimbra generates a self-signed certificate for TLS. As self-signed certificates are not trusted web browsers will complain about it. To use a certificate issued by a trusted certification authority (CA)
+- By default Zimbra generates a self-signed certificate for TLS. As self-signed certificates are not trusted web browsers will complain about it.
 
-- You can tell the container to set it in by providing the private key at `/data/app/tls/zimbra.key` and the certificate at `/data/app/tls/zimbra.crt`.
+-   To use a certificate issued by a trusted certification authority (CA),  you can tell the container to set it in by providing the private key at `/data/app/tls/zimbra.key` and the certificate at `/data/app/tls/zimbra.crt`.
 
 - The container keeps track of changes to the certificate file and re-configures Zimbra, if necessary.
 
@@ -77,9 +77,9 @@ apt-get upgrade
 
 #### HTTP Transport Security (HSTS)
 
-If the container is *directly* connected to the internet (without a reverse proxy in between), HTTP Transport Security (HSTS) should be enabled to tell web browsers to connect to Zimbra over HTTPS only. This can be done as follows:
+If the container is `directly` linked to the internet (without the use of a reverse proxy), HTTP Transport Security (`HSTS`) should be enabled to instruct web browsers to only connect to Zimbra through HTTPS. This can be accomplished as follows:
 
-```
+```bash
 sudo -u zimbra -- /opt/zimbra/bin/zmprov mcf +zimbraResponseHeader "Strict-Transport-Security: max-age=31536000"
 ```
 
