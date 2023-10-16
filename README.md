@@ -9,7 +9,7 @@ This image contains everything required to download, install, and run the [Zimbr
   
 2. To decrease the possibility of security vulnerabilities, the container configures Ubuntu's *unattended upgrades* package to automatically install official updates. To find out how and why should you do it, [learn more here](https://www.kolide.com/features/checks/ubuntu-unattended-upgrades).
 
-3. The container supports IPv6 with a global IPv6 address and configures packet filtering to block common attacks and access to non-public ports.
+3.The container supports IPv6 and has a global IPv6 address. It also has packet filtering configured to prevent common attacks and access to non-public ports.
 
 ## Usage
 
