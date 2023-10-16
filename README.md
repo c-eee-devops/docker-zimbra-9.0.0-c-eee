@@ -16,7 +16,15 @@ Usage scenarios on how to deploy the Zimbra container on a *Docker* host or on *
 
 ## Maintenance
 
-The container installs a complete Ubuntu 18.04 LTS installation plus Zimbra onto the attached volume, if the volume is empty. This also means that running an updated docker image does not automatically update the installation on the volume. Nevertheless the installation is kept up-to-date as Ubuntu's *unattended upgrades* package installs official updates automatically. If you do not want the installation to be updated automatically, you can simply disable unattended upgrades by setting `APT::Periodic::Unattended-Upgrade "0";` in `/etc/apt/apt.conf.d/20auto-upgrades` after the installation has finished.
+1. If the associated volume is empty, the container installs a full Ubuntu 20.04 LTS installation along with Zimbra. This also implies that executing an updated docker image does not update the installation on the disk.
+   
+2.  The installation is kept up to date because Ubuntu's *unattended upgrades* program automatically installs official updates. If you do not want the installation to be automatically updated,
+   
+3.  To stop unattended upgrades after the installation by setting, in case if you don't want to have it some reason. 
+
+ ```bash
+ 'APT::Periodic::Unattended-Upgrade "0";' in '/etc/apt/apt.conf.d/20auto-upgrades'.
+ ```
 
 To install updates manually, you need to get a shell in the container using the following command:
 
