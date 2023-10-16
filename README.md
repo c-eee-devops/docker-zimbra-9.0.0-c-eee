@@ -1,12 +1,5 @@
----
 
-## ATTENTION
-
-This project is not developed any further.
-
----
-
-# Docker Image with Zimbra 8.8.15 GA (FOSS Edition)
+# Docker Image with Zimbra 9.0.0 (FOSS Edition)
 
 [![Build Status](https://dev.azure.com/griffinplus/Docker%20Images/_apis/build/status/14?branchName=master)](https://dev.azure.com/griffinplus/Docker%20Images/_build/latest?definitionId=14&branchName=master)
 [![Docker Pulls](https://img.shields.io/docker/pulls/griffinplus/zimbra.svg)](https://hub.docker.com/r/griffinplus/zimbra)
