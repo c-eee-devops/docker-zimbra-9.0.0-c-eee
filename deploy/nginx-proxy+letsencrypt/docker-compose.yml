@@ -32,7 +32,7 @@ services:
     restart: unless-stopped
 
   zimbra:
-    image: griffinplus/zimbra:latest
+    image: c-eee.org/zimbra:latest
     container_name: zimbra
     hostname: $ZIMBRA_HOSTNAME
     ports:
