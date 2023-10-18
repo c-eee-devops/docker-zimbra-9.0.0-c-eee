@@ -395,10 +395,20 @@ v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmQ0nDvzpJn4b6nvvTD
 v=spf1 mx a ~all
 ```
 
-This instructs other mail servers to accept mail from a mail server whose IP address is listed by `A` or `AAAA` records in the DNS of the same domain. Furthermore all mail exchangers of the domain (identified by `MX` records) are allowed to send mail for the domain. At the end `~all` tells other mail servers to treat violations of the policy as *soft fails*, i.e. the mail is tagged, but not rejected. This is primarily useful in conjunction with a DMARC policy (see below). The [SPF syntax documentation](http://www.openspf.org/SPF_Record_Syntax) shows how to craft a custom SPF policy.
+- This informs other mail servers to accept messages from a mail server whose IP address is specified in the DNS of the same domain by A or AAAA records.
+  
+-  Furthermore, all domain mail exchangers (designated by MX records) are permitted to send mail for the domain.
+  
+-  Finally, all instructs other mail servers to treat policy violations as soft fails, i.e. the mail is marked but not rejected.
+  
+-  This is most effective when combined with a DMARC policy (see below).
+  
+-  The SPF syntax documentation explains you to create your own SPF policy.
 
 A few minutes after setting the SPF record you can use one of the following tools to check it:
+
 - [MxToolbox](https://mxtoolbox.com/spf.aspx)
+  
 - [Dmarcian SPF Surveyer](https://dmarcian.com/spf-survey/)
 
 ### Domain-based Message Authentication, Reporting and Conformance (DMARC)
