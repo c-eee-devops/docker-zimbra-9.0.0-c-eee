@@ -372,8 +372,8 @@ The initial parameter set is as follows:
 
 In most cases the parameters should be ok, but if you need to tune them, the following commands can be used to change the parameters:
 
-```
-sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_notice_user=admin@my-domain.com
+```bash
+sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_notice_user=admin@c-eee.org
 sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_threshold_seconds=3600
 sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_ipacct_threshold=10
 sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_acct_threshold=15
@@ -408,7 +408,7 @@ sudo -u zimbra -- /opt/zimbra/libexec/zmdkimkeyutil -a -d c-ceee.org
 ```
 - This will generate a 2048-bit RSA key and enable DKIM signing for the domain supplied. 
 
-- To complete the setting, you must publish the TXT record produced by 'zmdkimkeyutil' in your DNS. 
+- To complete the setting, you must publish the TXT record produced by `zmdkimkeyutil` in your `DNS`. 
 
 - The `TXT` record has the name `AB6EFD30-2AA8-11E8-ACDA-A71CCC6989A6._domainkey`, whilst the DKIM selector is `AB6EFD30-2AA8-11E8-ACDA-A71CCC6989A6` 
 
@@ -479,33 +479,47 @@ A few minutes after setting the SPF record you can use one of the following tool
 - A simple, but proven record is...
 
   ```bash
-  v=DMARC1; p=quarantine; rua=mailto:dmarc@my-domain.com; ruf=mailto:dmarc@my-domain.com; sp=quarantine
+  v=DMARC1; p=quarantine; rua=mailto:dmarc@my-domain.com; ruf=mailto:dmarc@c-eee.org; sp=quarantine
   ```
 
-This instructs other mail servers to accept mails only, if the DKIM signature is present and valid and/or the SPF policy is met. If both checks fail, the mail should not be delivered and put aside (quarantined). Mail servers will send aggregate reports (`rua`) and forensic data (`ruf`) to `dmarc@my-domain.com`. The official [DMARC website](https://dmarc.org) provides a comprehensive documentation how DMARC works and how it can be configured to suit your needs (if you need more fine-grained control over DMARC parameters). [Kitterman's DMARC Assistent](http://www.kitterman.com/dmarc/assistant.html) helps with setting up a custom DMARC policy.
+- This notifies other mail servers to accept emails only if the `DKIM` signature is available and genuine, as well as if the `SPF` policy is met. 
+
+- If both checks fail, the letter should be he`ld (quarantined) and not delivered.
+
+- Aggregate reports (`rua`) and forensic data (`ruf`) will be sent to `dmarc@c-eee.org` by mail servers. 
+
+- The official [DMARC website](https://dmarc.org) contains extensive material on how `DMARC` works and how it can be adjusted to meet your specific needs (if you require finer-grained control over `DMARC` parameters). 
+
+- Setting up a bespoke DMARC policy is aided by [Kitterman's DMARC Assistant](http://www.kitterman.com/dmarc/assistant.html).
 
 A few minutes after setting the DMARC record in your DNS, you can check it using one of the following tools:
+
 - [MxToolbox](https://mxtoolbox.com/DMARC.aspx)
 - [Dmarcian DMARC Inspector](https://dmarcian.com/dmarc-inspector/)
 - [Proofpoint DMARC Check](https://stopemailfraud.proofpoint.com/dmarc/)
 
-### Rejecting false "Mail From" addresses
+### Rejecting false `Mail From` addresses
 
-Zimbra is configured to allow any sender address when receiving mail. This can be a security problem as an attacker could send mails to Zimbra users impersonating other users. The following links provide good guides to improve security:
+[!IMPORTANT] 
+When receiving mail, Zimbra is set up to accept any sender address. This could pose a security risk because an attacker could send emails to Zimbra users while impersonating other users. The following resources can help you increase your security:
+
 - [Rejecting false "mail from" addresses](https://wiki.zimbra.com/wiki/Rejecting_false_%22mail_from%22_addresses)
+  
 - [Enforcing a match between FROM address and sasl username](https://wiki.zimbra.com/wiki/Enforcing_a_match_between_FROM_address_and_sasl_username_8.5)
 
-To sum it up, you need to do the following things to reject false "mail from" addresses and allow authenticated users to use their own identities (mail adresses) only:
+To summarize, the following actions must be taken in order to reject bogus "mail from" addresses and allow authenticated users to utilize only their own identities (mail adresses):
 
-```
+```bash
 sudo -u zimbra -- /opt/zimbra/bin/zmprov mcf zimbraMtaSmtpdRejectUnlistedRecipient yes
 sudo -u zimbra -- /opt/zimbra/bin/zmprov mcf zimbraMtaSmtpdRejectUnlistedSender yes
 sudo -u zimbra -- /opt/zimbra/bin/zmprov mcf zimbraMtaSmtpdSenderLoginMaps proxy:ldap:/opt/zimbra/conf/ldap-slm.cf +zimbraMtaSmtpdSenderRestrictions reject_authenticated_sender_login_mismatch
 ```
 
-Furthermore you need to edit the file `/opt/zimbra/conf/zmconfigd/smtpd_sender_restrictions.cf` and add `reject_sender_login_mismatch` after the `permit_mynetworks` line. It should look like the following:
+Furthermore you need to edit the file `/opt/zimbra/conf/zmconfigd/smtpd_sender_restrictions.cf` and add `reject_sender_login_mismatch` after the `permit_mynetworks` line. 
 
-```
+It should look like the following:
+
+```bash
 %%exact VAR:zimbraMtaSmtpdSenderRestrictions reject_authenticated_sender_login_mismatch%%
 %%contains VAR:zimbraMtaSmtpdSenderRestrictions check_sender_access lmdb:/opt/zimbra/conf/postfix_reject_sender%%
 %%contains VAR:zimbraServiceEnabled cbpolicyd^ check_policy_service inet:localhost:%%zimbraCBPolicydBindPort%%%%
@@ -517,10 +531,11 @@ permit_tls_clientcerts
 %%contains VAR:zimbraServiceEnabled amavis^ check_sender_access regexp:/opt/zimbra/common/conf/tag_as_foreign.re%%
 ```
 
-**As all manual changes done to Zimbra's configuration files changes to `smtpd_sender_restrictions.cf` are overwritten when Zimbra is upgraded. The change must be re-applied after an upgrade!**
+[!IMPORTANT] 
+As all manual changes done to Zimbra's configuration files changes to `smtpd_sender_restrictions.cf` are overwritten when Zimbra is upgraded. The change must be re-applied after an upgrade!
 
-The server needs to be restarted to apply the changes:
+The zimbra server needs to be restarted to apply the changes:
 
-```
+```bash
 sudo -u zimbra -- /opt/zimbra/bin/zmcontrol restart
 ```
