@@ -465,7 +465,6 @@ Cleaning up /etc/security/limits.conf...done.
 
 Finished removing Zimbra Collaboration Server.
 
-
 Installing repo packages (10):
    zimbra-core-components
    zimbra-ldap-components
@@ -568,7 +567,6 @@ Main menu
    q) Quit
 
 Address unconfigured (**) items  (? - help) 6
-
 
 Store configuration
 
@@ -834,7 +832,6 @@ ERROR: Notification failed
 Checking if the NG started running...done.
 Setting up zimbra crontab...done.
 
-
 Moving /tmp/zmsetup.20231018-141343.log to /opt/zimbra/log
 
 Configuration complete - press return to exit
@@ -853,7 +850,7 @@ HTTP request sent, awaiting response... 200 OK
 Length: 35695 (35K) [application/x-perl]
 Saving to: 'auditswatch'
 
-auditswatch                            100%[============================================================================>]  34.86K   150KB/s    in 0.2s
+auditswatch  100%[============================================================================>]  34.86K   150KB/s    in 0.2s
 
 2023-10-18 14:48:10 (150 KB/s) - 'auditswatch' saved [35695/35695]
 
@@ -1052,12 +1049,10 @@ Host mail.c-eee.org
 Starting auditswatch...done.
 root@mail:/app#
 ```
-  
-
-
+ 
   ```bash
   docker run --name zimbra \ 
-             --detach \
+             -itd \
              --rm \
              --ip6=2001:xxxx:xxxx:xxxx::2 \
              --network frontend \
