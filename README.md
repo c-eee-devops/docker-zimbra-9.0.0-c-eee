@@ -237,13 +237,23 @@ The container configures the firewall allowing only the following services to be
 | 5223/tcp | XMPP (default legacy port)              |
 | 7071/tcp | HTTPS (admin panel)                     |
 
-Access to backend services, e.g. LDAP, MariaDB or the Jetty server, is blocked by the packet filter. Access to webmail via HTTP(S) as well as mail access via POP(S) and IMAP(S) are proxied by NGINX shipped with Zimbra adding an extra layer of security. If you keep the default settings when installing Zimbra using this image, secure inter-process communication will be enabled. You can disable this feature. It will speed up the overall system performance as Zimbra components communicate without encryption. This is not an issue as everything is running on the same host, even within the same container.
+- The packet filter prevents access to backend services such as LDAP, MariaDB, or the Jetty server. 
 
-Furthermore the packet filter comes with a couple of rules protecting against common threats:
-- TCP floods (except SYN floods)
-- Bogus flags in TCP packets
-- RH0 packets (can be used for DoS attacks)
-- Ping of Death
+- Access to webmail via HTTP(S) as well as mail access via POP(S) and IMAP(S) are proxied by NGINX shipped with Zimbra adding an extra layer of security.
+
+- Secure inter-process communication will be enabled if you install Zimbra using this image with the default settings.
+
+- You can turn off the above feature. Because Zimbra components communicate without encryption, it improves overall system performance. This isn't a problem because everything runs on the same host, even within the same container.
+ 
+- Furthermore, the packet filter includes a few rules that guard against common threats:
+  
+  - TCP floods (except SYN floods)
+    
+  - Bogus flags in TCP packets
+
+  - RH0 packets (can be used for DoS attacks)
+
+  - Ping of Death
 
 ### Mitigating Denial of Service (DoS) Attacks
 
