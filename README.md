@@ -413,7 +413,11 @@ A few minutes after setting the SPF record you can use one of the following tool
 
 ### Domain-based Message Authentication, Reporting and Conformance (DMARC)
 
-*Domain-based Message Authentication, Reporting and Conformance (DMARC)* is an email-validation system designed to detect and prevent email spoofing. It is intended to combat certain techniques often used in phishing and email spam, such as emails with forged sender addresses that appear to originate from legitimate organizations. Specified in RFC 7489, DMARC counters the illegitimate usage of the exact domain name in the `From:` field of email message headers.
+- The `Domain-based Message Authentication, Reporting, and Conformance (DMARC)` system detects and prevents email spoofing.
+  
+- It is meant to counteract some phishing and email spam techniques, such as emails with counterfeit sender addresses that look to come from respectable businesses.
+  
+- `DMARC`, as defined in RFC 7489, prevents unauthorized use of the precise domain name in the 'From:' field of email message headers.
 
 DMARC is built on top of the two mechanisms discussed above, *DomainKeys Identified Mail (DKIM)* and the *Sender Policy Framework (SPF)*. It allows the administrative owner of a domain to publish a policy on which mechanism (DKIM, SPF or both) is employed when sending email from that domain and how the receiver should deal with failures. Additionally, it provides a reporting mechanism of actions performed under those policies. It thus coordinates the results of DKIM and SPF and specifies under which circumstances the `From:` header field, which is often visible to end users, should be considered legitimate.
 
