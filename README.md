@@ -174,6 +174,363 @@ docker volume create zimbra-data
 
 - Once the manual configuration is complete, you will most likely merely execute the container in the background with the `run` command:
 
+- Set up the enviorenment required to install `zimbra`
+  
+  ```bash
+  cd /app
+  chmod +x *.sh
+  ./setup-enviorenment.sh
+  ```
+- To install `zimbra`  run:
+
+  ```bash
+  ./install-zimbra.sh
+  ```
+- Output:
+
+  ```bash
+  Downloading Zimbra...
+--2023-10-18 14:06:03--  https://gitlab.com/c-eee.org/zimbra_c-eee/-/raw/main/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz
+Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
+Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 256776246 (245M) [application/x-gtar]
+Saving to: 'zcs.tgz'
+
+zcs.tgz                                100%[============================================================================>] 244.88M  50.0MB/s    in 6.0s
+
+2023-10-18 14:06:10 (40.7 MB/s) - 'zcs.tgz' saved [256776246/256776246]
+
+
+Extracting Zimbra...
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/.BUILD_PLATFORM
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/install.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/Migration_Exch_Admin.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/Zimbra iCalendar Migration Guide.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/MigrationWizard_Domino.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/Import_Wizard_Outlook.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/quick_start.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/MigrationWizard.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/RNZCSO_2005Beta.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/admin.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/Fedora Server Config.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/User Instructions for ZCS Import Wizard.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/OSmultiserverinstall.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/en_US/zimbra_user_guide.pdf
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/docs/zcl.txt
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/.BUILD_RELEASE_CANDIDATE
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/.BUILD_RELEASE_NO
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/README.txt
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/data/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/data/versions-init.sql
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/addUser.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/modules/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/modules/packages.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/modules/postinstall.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/modules/getconfig.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/utilfunc.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/util/globals.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/.BUILD_NUM
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/readme_binary_en_US.txt
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/lib/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/lib/jars/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/.BUILD_TYPE
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-spell_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf_9.0.0.1694759969-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-core-libs_9.0.0.1682575014-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-webclient-war_9.0.0.1695820709-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-store_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-imapd_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-native-lib_9.0.0.1521095672-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-service_9.0.0.1694759969-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-core-libs_9.0.0.1682575014-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf-rights_9.0.0.1610613206-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-native-lib_9.0.0.1521095672-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf-msgs_9.0.0.1677496878-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-proxy_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-service_9.0.0.1694759969-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-core-jar_9.0.0.1694759969-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-db_9.0.0.1694759969-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf_9.0.0.1694759969-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mta_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-store-libs_9.0.0.1682575014-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-store-libs_9.0.0.1682575014-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-db_9.0.0.1694759969-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf-msgs_9.0.0.1677496878-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-docs_9.0.0.1680161581-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-timezone-data_4.0.0.1693034045-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf-attrs_9.0.0.1692683453-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-core-jar_9.0.0.1694759969-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-dnscache_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-apache_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/Packages
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-webclient-war_9.0.0.1695820709-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-timezone-data_4.0.0.1693034045-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-docs_9.0.0.1680161581-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf-rights_9.0.0.1610613206-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-admin-console-war_9.0.0.1695220943-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-conf_9.0.0.1677496878-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-ldap_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-snmp_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-core_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-common-mbox-conf-attrs_9.0.0.1692683453-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-logger_9.0.0.GA.0033.UBUNTU20.64_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-war_9.0.0.1694759969-1.u20_amd64.changes
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-war_9.0.0.1694759969-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-conf_9.0.0.1677496878-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/packages/zimbra-mbox-admin-console-war_9.0.0.1695220943-1.u20_amd64.deb
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/bin/
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/bin/checkLicense.pl
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/bin/zmValidateLdap.pl
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/bin/get_plat_tag.sh
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/bin/checkService.pl
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/bin/zmdbintegrityreport
+zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/.BUILD_TIME_STAMP
+
+Installing Zimbra...
+
+Operations logged to /tmp/install.log.suHabPD2
+Checking for existing installation...
+    zimbra-drive...NOT FOUND
+    zimbra-imapd...NOT FOUND
+    zimbra-license-tools...NOT FOUND
+    zimbra-license-extension...NOT FOUND
+    zimbra-network-store...NOT FOUND
+    zimbra-network-modules-ng...NOT FOUND
+    zimbra-chat...NOT FOUND
+    zimbra-connect...NOT FOUND
+    zimbra-talk...NOT FOUND
+    zimbra-ldap...NOT FOUND
+    zimbra-logger...NOT FOUND
+    zimbra-mta...NOT FOUND
+    zimbra-dnscache...NOT FOUND
+    zimbra-snmp...NOT FOUND
+    zimbra-store...NOT FOUND
+    zimbra-apache...NOT FOUND
+    zimbra-spell...NOT FOUND
+    zimbra-convertd...NOT FOUND
+    zimbra-memcached...NOT FOUND
+    zimbra-proxy...NOT FOUND
+    zimbra-archiving...NOT FOUND
+    zimbra-core...NOT FOUND
+
+
+----------------------------------------------------------------------
+PLEASE READ THIS AGREEMENT CAREFULLY BEFORE USING THE SOFTWARE.
+SYNACOR, INC. ("SYNACOR") WILL ONLY LICENSE THIS SOFTWARE TO YOU IF YOU
+FIRST ACCEPT THE TERMS OF THIS AGREEMENT. BY DOWNLOADING OR INSTALLING
+THE SOFTWARE, OR USING THE PRODUCT, YOU ARE CONSENTING TO BE BOUND BY
+THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS
+AGREEMENT, THEN DO NOT DOWNLOAD, INSTALL OR USE THE PRODUCT.
+
+License Terms for this Zimbra Collaboration Suite Software:
+https://www.zimbra.com/license/zimbra-public-eula-2-6.html
+----------------------------------------------------------------------
+
+
+
+Do you agree with the terms of the software license agreement? [N] y
+
+
+
+
+
+Use Zimbra's package repository [Y] y
+
+Warning: apt-key output should not be parsed (stdout is not a terminal)
+Importing Zimbra GPG key
+
+Configuring package repository
+
+Checking for installable packages
+
+Found zimbra-core (local)
+Found zimbra-ldap (local)
+Found zimbra-logger (local)
+Found zimbra-mta (local)
+Found zimbra-dnscache (local)
+Found zimbra-snmp (local)
+Found zimbra-store (local)
+Found zimbra-apache (local)
+Found zimbra-spell (local)
+Found zimbra-memcached (repo)
+Found zimbra-proxy (local)
+Found zimbra-drive (repo)
+Found zimbra-imapd (local)
+
+
+Select the packages to install
+
+Install zimbra-ldap [Y] y
+
+Install zimbra-logger [Y] y
+
+Install zimbra-mta [Y] y
+
+Install zimbra-dnscache [Y] n
+
+Install zimbra-snmp [Y] y
+
+Install zimbra-store [Y] y
+
+Install zimbra-apache [Y] y
+
+Install zimbra-spell [Y] y
+
+Install zimbra-memcached [Y] y
+
+Install zimbra-proxy [Y] y
+
+Install zimbra-drive [Y] y
+
+Install zimbra-imapd (BETA - for evaluation only) [N] n
+
+Install zimbra-chat [Y] y
+Checking required space for zimbra-core
+Checking space for zimbra-store
+Checking required packages for zimbra-store
+zimbra-store package check complete.
+
+Installing:
+    zimbra-core
+    zimbra-ldap
+    zimbra-logger
+    zimbra-mta
+    zimbra-snmp
+    zimbra-store
+    zimbra-apache
+    zimbra-spell
+    zimbra-memcached
+    zimbra-proxy
+    zimbra-drive
+    zimbra-chat
+
+The system will be modified.  Continue? [N] y
+
+Beginning Installation - see /tmp/install.log.suHabPD2 for details...
+
+                          zimbra-core-components will be downloaded and installed.
+                            zimbra-timezone-data will be installed.
+                         zimbra-common-mbox-conf will be installed.
+                         zimbra-common-core-libs will be installed.
+                   zimbra-common-mbox-native-lib will be installed.
+                    zimbra-common-mbox-conf-msgs will be installed.
+                          zimbra-common-core-jar will be installed.
+                           zimbra-common-mbox-db will be installed.
+                         zimbra-common-mbox-docs will be installed.
+                   zimbra-common-mbox-conf-attrs will be installed.
+                  zimbra-common-mbox-conf-rights will be installed.
+                                     zimbra-core will be installed.
+                          zimbra-ldap-components will be downloaded and installed.
+                                     zimbra-ldap will be installed.
+                                   zimbra-logger will be installed.
+                           zimbra-mta-components will be downloaded and installed.
+                                      zimbra-mta will be installed.
+                          zimbra-snmp-components will be downloaded and installed.
+                                     zimbra-snmp will be installed.
+                         zimbra-store-components will be downloaded and installed.
+                       zimbra-jetty-distribution will be downloaded and installed.
+                       zimbra-mbox-webclient-war will be installed.
+                                 zimbra-mbox-war will be installed.
+                                zimbra-mbox-conf will be installed.
+                             zimbra-mbox-service will be installed.
+                          zimbra-mbox-store-libs will be installed.
+                   zimbra-mbox-admin-console-war will be installed.
+                                    zimbra-store will be installed.
+                        zimbra-apache-components will be downloaded and installed.
+                                   zimbra-apache will be installed.
+                         zimbra-spell-components will be downloaded and installed.
+                                    zimbra-spell will be installed.
+                                zimbra-memcached will be downloaded and installed.
+                         zimbra-proxy-components will be downloaded and installed.
+                                    zimbra-proxy will be installed.
+                                    zimbra-drive will be downloaded and installed (later).
+                                     zimbra-chat will be downloaded and installed (later).
+
+Downloading packages (10):
+   zimbra-core-components
+   zimbra-ldap-components
+   zimbra-mta-components
+   zimbra-snmp-components
+   zimbra-store-components
+   zimbra-jetty-distribution
+   zimbra-apache-components
+   zimbra-spell-components
+   zimbra-memcached
+   zimbra-proxy-components
+      ...done
+
+Removing /opt/zimbra
+Removing zimbra crontab entry...done.
+Cleaning up zimbra init scripts...done.
+Cleaning up /etc/security/limits.conf...done.
+
+Finished removing Zimbra Collaboration Server.
+
+
+Installing repo packages (10):
+   zimbra-core-components
+   zimbra-ldap-components
+   zimbra-mta-components
+   zimbra-snmp-components
+   zimbra-store-components
+   zimbra-jetty-distribution
+   zimbra-apache-components
+   zimbra-spell-components
+   zimbra-memcached
+   zimbra-proxy-components
+      ...done
+
+Installing local packages (25):
+   zimbra-timezone-data
+   zimbra-common-mbox-conf
+   zimbra-common-core-libs
+   zimbra-common-mbox-native-lib
+   zimbra-common-mbox-conf-msgs
+   zimbra-common-core-jar
+   zimbra-common-mbox-db
+   zimbra-common-mbox-docs
+   zimbra-common-mbox-conf-attrs
+   zimbra-common-mbox-conf-rights
+   zimbra-core
+   zimbra-ldap
+   zimbra-logger
+   zimbra-mta
+   zimbra-snmp
+   zimbra-mbox-webclient-war
+   zimbra-mbox-war
+   zimbra-mbox-conf
+   zimbra-mbox-service
+   zimbra-mbox-store-libs
+   zimbra-mbox-admin-console-war
+   zimbra-store
+   zimbra-apache
+   zimbra-spell
+   zimbra-proxy
+      ...done
+
+Installing extra packages (2):
+   zimbra-drive
+   zimbra-chat
+      ...done
+
+Running Post Installation Configuration:
+Operations logged to /tmp/zmsetup.20231018-141343.log
+Installing LDAP configuration database...done.
+Setting defaults...
+
+DNS ERROR resolving MX for mail.c-eee.org
+It is suggested that the domain name have an MX record configured in DNS
+Change domain name? [Yes]
+
+``
+  
+
+
   ```bash
   docker run --name zimbra \ 
              --detach \
