@@ -10,6 +10,51 @@ This image contains everything required to download, install, and run the [Zimbr
 
 3. The container supports IPv6 and has a global IPv6 address. It also has packet filtering configured to prevent common attacks and access to non-public ports.
 
+## Install `docker` using the Apt repository
+
+You must first configure the Docker repository before installing Docker Engine for the first time on a new host machine. After that, you may use the repository to install and update Docker.
+
+1. Set up Docker's Apt repository.
+
+```bash
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+
+2. Install the Docker packages.
+
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+3. Check your installation
+
+```bash
+sudo docker version
+```
+
+4. Add current user to `docker` group
+   
+```bash
+sudo usermod -aG docker $USER
+```
+
+5. Let current user to be a member of `docker` group without logoff & logon
+
+   ```bash
+   newgrp $USER
+   ```
 ## Deploying Zimbra on Docker Host
 
 ### Overview
