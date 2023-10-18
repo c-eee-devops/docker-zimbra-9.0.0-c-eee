@@ -1,4 +1,4 @@
-# Docker Image with Zimbra 9.0.0  OSE by C-EEE.ORG
+# Deploy Zimbra 9.0.0  OSE in Docker 
 
 ## Overview
 
