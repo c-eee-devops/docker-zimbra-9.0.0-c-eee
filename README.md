@@ -140,7 +140,7 @@ docker volume create zimbra-data
              --security-opt apparmor=unconfined \
              c-eee.org/zimbra \
              run-and-enter
-    ```
+  ```
 
 - To function correctly, the container requires a few more characteristics. 
 
@@ -371,6 +371,7 @@ The initial parameter set is as follows:
 | zimbra_swatch_total_threshold     | 100     | Total auth failure check which warns on *xx* auth failures from any IP to any account within the specified time.
 
 In most cases the parameters should be ok, but if you need to tune them, the following commands can be used to change the parameters:
+
 ```
 sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_notice_user=admin@my-domain.com
 sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_threshold_seconds=3600
@@ -437,19 +438,19 @@ v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmQ0nDvzpJn4b6nvvTD
 
 - A simple, but effective policy is:
 
-```
-v=spf1 mx a ~all
-```
+  ```
+  v=spf1 mx a ~all
+  ```
 
 - This informs other mail servers to accept messages from a mail server whose IP address is specified in the DNS of the same domain by A or AAAA records.
   
--  Furthermore, all domain mail exchangers (designated by MX records) are permitted to send mail for the domain.
+- Furthermore, all domain mail exchangers (designated by MX records) are permitted to send mail for the domain.
   
--  Finally, all instructs other mail servers to treat policy violations as soft fails, i.e. the mail is marked but not rejected.
+- Finally, all instructs other mail servers to treat policy violations as soft fails, i.e. the mail is marked but not rejected.
   
--  This is most effective when combined with a DMARC policy (see below).
+- This is most effective when combined with a DMARC policy (see below).
   
--  The SPF syntax documentation explains you to create your own SPF policy.
+- The SPF syntax documentation explains you to create your own SPF policy.
 
 A few minutes after setting the SPF record you can use one of the following tools to check it:
 
@@ -465,13 +466,21 @@ A few minutes after setting the SPF record you can use one of the following tool
   
 - `DMARC`, as defined in RFC 7489, prevents unauthorized use of the precise domain name in the 'From:' field of email message headers.
 
-DMARC is built on top of the two mechanisms discussed above, *DomainKeys Identified Mail (DKIM)* and the *Sender Policy Framework (SPF)*. It allows the administrative owner of a domain to publish a policy on which mechanism (DKIM, SPF or both) is employed when sending email from that domain and how the receiver should deal with failures. Additionally, it provides a reporting mechanism of actions performed under those policies. It thus coordinates the results of DKIM and SPF and specifies under which circumstances the `From:` header field, which is often visible to end users, should be considered legitimate.
+- DMARC is developed on top of the two previously mentioned techniques, *DomainKeys Identified Mail (DKIM)* and the *Sender Policy Framework (SPF). 
 
-To enable DMARC you need to add a TXT record to your DNS. The name of the TXT record must be `_dmarc`. The value of the TXT record defines how mail servers receiving mail from your domain should act. A simple, but proven record is...
+- It enables the domain's administrative owner to post a policy governing whether mechanism (DKIM, SPF, or both) is used when sending email from that domain and how the receiver should handle errors.
+  
+- It also includes a system for reporting actions taken in accordance with such policies. It thereby coordinates the DKIM and SPF results and specifies under what conditions the 'From:' header field, which is frequently accessible to end users, should be regarded valid.
 
-```
-v=DMARC1; p=quarantine; rua=mailto:dmarc@my-domain.com; ruf=mailto:dmarc@my-domain.com; sp=quarantine
-```
+- To enable DMARC you need to add a TXT record to your DNS. The name of the TXT record must be `_dmarc`.
+
+- The value of the TXT record defines how mail servers receiving mail from your domain should act.
+
+- A simple, but proven record is...
+
+  ```bash
+  v=DMARC1; p=quarantine; rua=mailto:dmarc@my-domain.com; ruf=mailto:dmarc@my-domain.com; sp=quarantine
+  ```
 
 This instructs other mail servers to accept mails only, if the DKIM signature is present and valid and/or the SPF policy is met. If both checks fail, the mail should not be delivered and put aside (quarantined). Mail servers will send aggregate reports (`rua`) and forensic data (`ruf`) to `dmarc@my-domain.com`. The official [DMARC website](https://dmarc.org) provides a comprehensive documentation how DMARC works and how it can be configured to suit your needs (if you need more fine-grained control over DMARC parameters). [Kitterman's DMARC Assistent](http://www.kitterman.com/dmarc/assistant.html) helps with setting up a custom DMARC policy.
 
