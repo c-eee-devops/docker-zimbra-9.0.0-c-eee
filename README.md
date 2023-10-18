@@ -188,21 +188,20 @@ docker volume create zimbra-data
   ```
 - Output:
 
-  ```bash
-  root@mail:/app# ./install-zimbra.sh
-
+```bash
+root@mail:/app# ./install-zimbra.sh
 Downloading Zimbra...
---2023-10-18 14:06:03--  https://gitlab.com/c-eee.org/zimbra_c-eee/-/raw/main/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz
+--2023-10-18 14:06:03--  https://gitlab.com/c-eee.org/zimbra_c-eee/-/raw/main/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs- 
+9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz
 Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
 Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 256776246 (245M) [application/x-gtar]
 Saving to: 'zcs.tgz'
 
-zcs.tgz                                100%[============================================================================>] 244.88M  50.0MB/s    in 6.0s
+zcs.tgz 100%[============================================================================>] 244.88M  50.0MB/s    in 6.0s
 
 2023-10-18 14:06:10 (40.7 MB/s) - 'zcs.tgz' saved [256776246/256776246]
-
 
 Extracting Zimbra...
 zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750/.BUILD_PLATFORM
@@ -320,7 +319,6 @@ Checking for existing installation...
     zimbra-archiving...NOT FOUND
     zimbra-core...NOT FOUND
 
-
 ----------------------------------------------------------------------
 PLEASE READ THIS AGREEMENT CAREFULLY BEFORE USING THE SOFTWARE.
 SYNACOR, INC. ("SYNACOR") WILL ONLY LICENSE THIS SOFTWARE TO YOU IF YOU
@@ -333,13 +331,7 @@ License Terms for this Zimbra Collaboration Suite Software:
 https://www.zimbra.com/license/zimbra-public-eula-2-6.html
 ----------------------------------------------------------------------
 
-
-
 Do you agree with the terms of the software license agreement? [N] y
-
-
-
-
 
 Use Zimbra's package repository [Y] y
 
@@ -845,7 +837,6 @@ Setting up zimbra crontab...done.
 
 Moving /tmp/zmsetup.20231018-141343.log to /opt/zimbra/log
 
-
 Configuration complete - press return to exit
 Retrieving some information needed for further steps...
 - Admin e-mail address: admin@c-eee.org
@@ -1060,7 +1051,7 @@ Host mail.c-eee.org
         Starting zimlet webapp...Done.
 Starting auditswatch...done.
 root@mail:/app#
-  ```
+```
   
 
 
