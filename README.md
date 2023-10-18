@@ -847,6 +847,219 @@ Moving /tmp/zmsetup.20231018-141343.log to /opt/zimbra/log
 
 
 Configuration complete - press return to exit
+Retrieving some information needed for further steps...
+- Admin e-mail address: admin@c-eee.org
+
+Configuring Zimbra's brute-force detector (auditswatch) to send notifications to admin@c-eee.org...
+--2023-10-18 14:48:08--  http://bugzilla-attach.zimbra.com/attachment.cgi?id=66723
+Resolving bugzilla-attach.zimbra.com (bugzilla-attach.zimbra.com)... 141.148.50.153
+Connecting to bugzilla-attach.zimbra.com (bugzilla-attach.zimbra.com)|141.148.50.153|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://bugzilla-attach.zimbra.com:443/attachment.cgi?id=66723 [following]
+--2023-10-18 14:48:09--  https://bugzilla-attach.zimbra.com/attachment.cgi?id=66723
+Connecting to bugzilla-attach.zimbra.com (bugzilla-attach.zimbra.com)|141.148.50.153|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 35695 (35K) [application/x-perl]
+Saving to: 'auditswatch'
+
+auditswatch                            100%[============================================================================>]  34.86K   150KB/s    in 0.2s
+
+2023-10-18 14:48:10 (150 KB/s) - 'auditswatch' saved [35695/35695]
+
+/opt/zimbra/conf/auditswatchrc is missing.
+Starting auditswatch...chmod: cannot access '/opt/zimbra/log/zmauditswatch.out': No such file or directory
+done.
+
+Removing Zimbra installation files...
+removed '/install/zcs.tgz'
+removed '/install/zcs/.BUILD_PLATFORM'
+removed '/install/zcs/install.sh'
+removed '/install/zcs/docs/en_US/Migration_Exch_Admin.pdf'
+removed '/install/zcs/docs/en_US/Zimbra iCalendar Migration Guide.pdf'
+removed '/install/zcs/docs/en_US/MigrationWizard_Domino.pdf'
+removed '/install/zcs/docs/en_US/Import_Wizard_Outlook.pdf'
+removed '/install/zcs/docs/en_US/quick_start.pdf'
+removed '/install/zcs/docs/en_US/MigrationWizard.pdf'
+removed '/install/zcs/docs/en_US/RNZCSO_2005Beta.pdf'
+removed '/install/zcs/docs/en_US/admin.pdf'
+removed '/install/zcs/docs/en_US/Fedora Server Config.pdf'
+removed '/install/zcs/docs/en_US/User Instructions for ZCS Import Wizard.pdf'
+removed '/install/zcs/docs/en_US/OSmultiserverinstall.pdf'
+removed '/install/zcs/docs/en_US/zimbra_user_guide.pdf'
+removed directory '/install/zcs/docs/en_US'
+removed '/install/zcs/docs/zcl.txt'
+removed directory '/install/zcs/docs'
+removed '/install/zcs/.BUILD_RELEASE_CANDIDATE'
+removed '/install/zcs/.BUILD_RELEASE_NO'
+removed '/install/zcs/README.txt'
+removed '/install/zcs/data/versions-init.sql'
+removed directory '/install/zcs/data'
+removed '/install/zcs/util/addUser.sh'
+removed '/install/zcs/util/modules/packages.sh'
+removed '/install/zcs/util/modules/postinstall.sh'
+removed '/install/zcs/util/modules/getconfig.sh'
+removed directory '/install/zcs/util/modules'
+removed '/install/zcs/util/utilfunc.sh'
+removed '/install/zcs/util/globals.sh'
+removed directory '/install/zcs/util'
+removed '/install/zcs/.BUILD_NUM'
+removed '/install/zcs/readme_binary_en_US.txt'
+removed directory '/install/zcs/lib/jars'
+removed directory '/install/zcs/lib'
+removed '/install/zcs/.BUILD_TYPE'
+removed '/install/zcs/packages/zimbra-spell_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-mbox-conf_9.0.0.1694759969-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-core-libs_9.0.0.1682575014-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-webclient-war_9.0.0.1695820709-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-store_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-imapd_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-mbox-native-lib_9.0.0.1521095672-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-service_9.0.0.1694759969-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-core-libs_9.0.0.1682575014-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-conf-rights_9.0.0.1610613206-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-native-lib_9.0.0.1521095672-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-conf-msgs_9.0.0.1677496878-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-proxy_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-service_9.0.0.1694759969-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-core-jar_9.0.0.1694759969-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-mbox-db_9.0.0.1694759969-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-conf_9.0.0.1694759969-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-mta_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-store-libs_9.0.0.1682575014-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-store-libs_9.0.0.1682575014-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-db_9.0.0.1694759969-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-mbox-conf-msgs_9.0.0.1677496878-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-docs_9.0.0.1680161581-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-timezone-data_4.0.0.1693034045-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-mbox-conf-attrs_9.0.0.1692683453-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-core-jar_9.0.0.1694759969-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-dnscache_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-apache_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/Packages'
+removed '/install/zcs/packages/zimbra-mbox-webclient-war_9.0.0.1695820709-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-timezone-data_4.0.0.1693034045-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-docs_9.0.0.1680161581-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-common-mbox-conf-rights_9.0.0.1610613206-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-admin-console-war_9.0.0.1695220943-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-mbox-conf_9.0.0.1677496878-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-ldap_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-snmp_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-core_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-common-mbox-conf-attrs_9.0.0.1692683453-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-logger_9.0.0.GA.0033.UBUNTU20.64_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-war_9.0.0.1694759969-1.u20_amd64.changes'
+removed '/install/zcs/packages/zimbra-mbox-war_9.0.0.1694759969-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-conf_9.0.0.1677496878-1.u20_amd64.deb'
+removed '/install/zcs/packages/zimbra-mbox-admin-console-war_9.0.0.1695220943-1.u20_amd64.deb'
+removed directory '/install/zcs/packages'
+removed '/install/zcs/bin/checkLicense.pl'
+removed '/install/zcs/bin/zmValidateLdap.pl'
+removed '/install/zcs/bin/get_plat_tag.sh'
+removed '/install/zcs/bin/checkService.pl'
+removed '/install/zcs/bin/zmdbintegrityreport'
+removed directory '/install/zcs/bin'
+removed '/install/zcs/.BUILD_TIME_STAMP'
+removed directory '/install/zcs'
+removed directory '/install/auditswatch'
+removed directory '/install'
+
+Adding Zimbra's Perl include path to search path...
+
+Generating stronger DH parameters (4096 bit)...
+Generating DH parameters, 4096 bit long safe prime
+zmdhparam: saving 'zimbraSSLDHParam' via zmprov modifyConfig
+
+Configuring cipher suites (as strong as possible without breaking compatibility and sacrificing speed)...
+
+Configuring default COS to use selected persona in the Return-Path of the mail envelope (important for privacy).
+
+Installing mail utilities to enable unattended-upgrades to send notifications.
+(Can be done after installing Zimbra only as bsd-mailx pulls in postfix that conflicts with the postfix package deployed by Zimbra.)
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  liblockfile-bin liblockfile1
+The following NEW packages will be installed:
+  bsd-mailx liblockfile-bin liblockfile1
+0 upgraded, 3 newly installed, 0 to remove and 0 not upgraded.
+Need to get 85.6 kB of archives.
+After this operation, 265 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu focal/main amd64 liblockfile-bin amd64 1.16-1.1 [11.7 kB]
+Get:2 http://archive.ubuntu.com/ubuntu focal/main amd64 liblockfile1 amd64 1.16-1.1 [6680 B]
+Get:3 http://archive.ubuntu.com/ubuntu focal/main amd64 bsd-mailx amd64 8.1.2-0.20180807cvs-1 [67.2 kB]
+Fetched 85.6 kB in 2s (53.0 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package liblockfile-bin.
+(Reading database ... 57176 files and directories currently installed.)
+Preparing to unpack .../liblockfile-bin_1.16-1.1_amd64.deb ...
+Unpacking liblockfile-bin (1.16-1.1) ...
+Selecting previously unselected package liblockfile1:amd64.
+Preparing to unpack .../liblockfile1_1.16-1.1_amd64.deb ...
+Unpacking liblockfile1:amd64 (1.16-1.1) ...
+Selecting previously unselected package bsd-mailx.
+Preparing to unpack .../bsd-mailx_8.1.2-0.20180807cvs-1_amd64.deb ...
+Unpacking bsd-mailx (8.1.2-0.20180807cvs-1) ...
+Setting up liblockfile-bin (1.16-1.1) ...
+Setting up liblockfile1:amd64 (1.16-1.1) ...
+Setting up bsd-mailx (8.1.2-0.20180807cvs-1) ...
+update-alternatives: using /usr/bin/bsd-mailx to provide /usr/bin/mailx (mailx) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/mailx.1.gz because associated file /usr/share/man/man1/bsd-mailx.1.gz (of link group mailx) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/mail.1.gz because associated file /usr/share/man/man1/bsd-mailx.1.gz (of link group mailx) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/Mail.1.gz because associated file /usr/share/man/man1/bsd-mailx.1.gz (of link group mailx) doesn't exist
+Processing triggers for libc-bin (2.31-0ubuntu9.12) ...
+
+Restarting services...
+Host mail.c-eee.org
+        Stopping zmconfigd...Done.
+        Stopping license-daemon...skipped.
+                /opt/zimbra/bin/zmlicensectl missing or not executable.
+        Stopping zimlet webapp...Done.
+        Stopping zimbraAdmin webapp...Done.
+        Stopping zimbra webapp...Done.
+        Stopping service webapp...Done.
+        Stopping stats...Done.
+        Stopping mta...Done.
+        Stopping onlyoffice...skipped.
+                /opt/zimbra/bin/zmonlyofficectl missing or not executable.
+        Stopping spell...Done.
+        Stopping snmp...Done.
+        Stopping cbpolicyd...Done.
+        Stopping archiving...Done.
+        Stopping opendkim...Done.
+        Stopping amavis...Done.
+        Stopping antivirus...Done.
+        Stopping antispam...Done.
+        Stopping proxy...Done.
+        Stopping memcached...Done.
+        Stopping mailbox...Done.
+        Stopping logger...Done.
+        Stopping dnscache...Done.
+        Stopping ldap...Done.
+ * Starting enhanced syslogd rsyslogd                                                                                                                [ OK ]
+ * Starting periodic command scheduler cron                                                                                                          [ OK ]
+ * Starting OpenBSD Secure Shell server sshd                                                                                                         [ OK ]
+Host mail.c-eee.org
+        Starting ldap...Done.
+        Starting zmconfigd...Done.
+        Starting logger...Done.
+        Starting mailbox...Done.
+        Starting memcached...Done.
+        Starting proxy...Done.
+        Starting amavis...Done.
+        Starting antispam...Done.
+        Starting antivirus...Done.
+        Starting opendkim...Done.
+        Starting snmp...Done.
+        Starting spell...Done.
+        Starting mta...Done.
+        Starting stats...Done.
+        Starting service webapp...Done.
+        Starting zimbra webapp...Done.
+        Starting zimbraAdmin webapp...Done.
+        Starting zimlet webapp...Done.
+Starting auditswatch...done.
+root@mail:/app#
   ```
   
 
