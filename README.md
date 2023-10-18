@@ -190,9 +190,10 @@ docker volume create zimbra-data
 
   ```bash
   Downloading Zimbra...
---2023-10-18 14:06:03--  https://gitlab.com/c-eee.org/zimbra_c-eee/-/raw/main/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz
-Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
-Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
+  2023-10-18 14:06:03--  https://gitlab.com/c-eee.org/zimbra_c-eee/-/raw/main/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs- 
+  9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz
+  Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
+  Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 256776246 (245M) [application/x-gtar]
 Saving to: 'zcs.tgz'
@@ -330,14 +331,7 @@ AGREEMENT, THEN DO NOT DOWNLOAD, INSTALL OR USE THE PRODUCT.
 License Terms for this Zimbra Collaboration Suite Software:
 https://www.zimbra.com/license/zimbra-public-eula-2-6.html
 ----------------------------------------------------------------------
-
-
-
 Do you agree with the terms of the software license agreement? [N] y
-
-
-
-
 
 Use Zimbra's package repository [Y] y
 
@@ -361,7 +355,6 @@ Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-drive (repo)
 Found zimbra-imapd (local)
-
 
 Select the packages to install
 
@@ -527,7 +520,7 @@ DNS ERROR resolving MX for mail.c-eee.org
 It is suggested that the domain name have an MX record configured in DNS
 Change domain name? [Yes]
 
-``
+```
   
 
 
