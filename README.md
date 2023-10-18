@@ -377,9 +377,19 @@ v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmQ0nDvzpJn4b6nvvTD
 
 ### Sender Policy Framework (SPF)
 
-*Sender Policy Framework (SPF)* is a simple email-validation system designed to detect email spoofing by providing a mechanism to allow receiving mail exchangers to check that incoming mail from a domain comes from a host authorized by that domain's administrators. The list of authorized sending hosts for a domain is published in the Domain Name System (DNS) records for that domain in the form of a specially formatted TXT record. Email spam and phishing often use forged "from" addresses, so publishing and checking SPF records can be considered anti-spam techniques.
+- The `Sender Policy Framework (SPF)` is a simple email-validation system designed to identify email spoofing by providing a means for receiving mail exchangers to verify that incoming mail from a domain originates from a host approved by the domain's administrators. 
 
-To enable SPF you need to add a TXT record to your DNS. The name of the TXT record must be the name of the domain the SPF policy refers to. The value of the TXT record defines the policy. A simple, but effective policy is:
+- The list of approved transmitting hosts for a domain is published in the domain's Domain Name System (DNS) records as a specially structured `TXT` record.
+  
+- Because email spam and phishing frequently use forged "from" addresses, publishing and validating SPF records are anti-spam measures.
+  
+- To enable `SPF` you need to add a `TXT` record to your `DNS`. 
+
+- The name of the `TXT` record must be the name of the `domain` the SPF policy refers to. 
+
+- The value of the `TXT` record defines the policy. 
+
+- A simple, but effective policy is:
 
 ```
 v=spf1 mx a ~all
