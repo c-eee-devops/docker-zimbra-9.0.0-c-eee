@@ -16,39 +16,40 @@ You must first configure the Docker repository before installing Docker Engine f
 
 1. Set up Docker's Apt repository.
 
-```bash
-# Add Docker's official GPG key:
-sudo apt-get update
-sudo apt-get install ca-certificates curl gnupg
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-sudo chmod a+r /etc/apt/keyrings/docker.gpg
+   ```bash
+   # Add Docker's official GPG key:
+   sudo apt-get update
+   sudo apt-get install ca-certificates curl gnupg
+   sudo install -m 0755 -d /etc/apt/keyrings
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
-# Add the repository to Apt sources:
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update
-```
+   # Add the repository to Apt sources:
+   echo \
+   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] 
+   https://download.docker.com/linux/ubuntu \
+   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   sudo apt-get update
+   ```
 
 2. Install the Docker packages.
 
-```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
+   ```bash
+   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
 
 3. Check your installation
 
-```bash
-sudo docker version
-```
+   ```bash
+   sudo docker version
+   ```
 
 4. Add current user to `docker` group
    
-```bash
-sudo usermod -aG docker $USER
-```
+   ```bash
+   sudo usermod -aG docker $USER
+   ```
 
 5. Let current user to be a member of `docker` group without logoff & logon
 
@@ -73,13 +74,13 @@ This section explains how to start the Zimbra container on a standard Docker hos
   
 - Docker advises using a subnet of at least /80 so that it can assign IP addresses by ORing the container's (virtual) MAC address with the provided subnet.
 
-```bash
-docker network create -d bridge \
-  --subnet 192.168.0.0/24 \
-  --subnet 2001:xxxx:xxxx:xxxx::/80 \
-  --ipv6 \
+  ```bash
+  docker network create -d bridge \
+    --subnet 192.168.0.0/24 \
+    --subnet 2001:xxxx:xxxx:xxxx::/80 \
+    --ipv6 \
   frontend
-```
+  ```
 ### Step 2 - Create a Volume for the Zimbra Container
 
 The zimbra container installs a minimalistic Ubuntu 20.04 LTS and Zimbra onto a docker volume. You can create a named volume using the following command:
@@ -110,36 +111,36 @@ docker volume create zimbra-data
 
 - Clone the reposotory to you Ubuntu 20.04 doker host
 
-```bash
-git clone https://github.com/ceeedevops/docker-zimbra-9.0.0-C-EEE.git
-```
+  ```bash
+  git clone https://github.com/ceeedevops/docker-zimbra-9.0.0-C-EEE.git
+  ```
 
-```bash
-docker run -it \
-           --rm \
-           --ip6=2001:xxxx:xxxx:xxxx::2 \
-           --network frontend \
-           --hostname mail.c-eee.org \
-           -p 25:25 \
-           -p 80:80 \
-           -p 110:110 \
-           -p 143:143 \
-           -p 443:443 \
-           -p 465:465 \
-           -p 587:587 \
-           -p 993:993 \
-           -p 995:995 \
-           -p 5222:5222 \
-           -p 5223:5223 \
-           -p 7071:7071 \
-           --volume zimbra-data:/data \
-           --cap-add NET_ADMIN \
-           --cap-add SYS_ADMIN \
-           --cap-add SYS_PTRACE \
-           --security-opt apparmor=unconfined \
-           c-eee.org/zimbra \
-           run-and-enter
-```
+  ```bash
+  docker run -it \
+             --rm \
+             --ip6=2001:xxxx:xxxx:xxxx::2 \
+             --network frontend \
+             --hostname mail.c-eee.org \
+             -p 25:25 \
+             -p 80:80 \
+             -p 110:110 \
+             -p 143:143 \
+             -p 443:443 \
+             -p 465:465 \
+             -p 587:587 \
+             -p 993:993 \
+             -p 995:995 \
+             -p 5222:5222 \
+             -p 5223:5223 \
+             -p 7071:7071 \
+             --volume zimbra-data:/data \
+             --cap-add NET_ADMIN \
+             --cap-add SYS_ADMIN \
+             --cap-add SYS_PTRACE \
+             --security-opt apparmor=unconfined \
+             c-eee.org/zimbra \
+             run-and-enter
+    ```
 
 - To function correctly, the container requires a few more characteristics. 
 
@@ -161,33 +162,33 @@ docker run -it \
 
 - Once the manual configuration is complete, you will most likely merely execute the container in the background with the `run` command:
 
-```bash
-docker run --name zimbra \ 
-           --detach \
-           --rm \
-           --ip6=2001:xxxx:xxxx:xxxx::2 \
-           --network frontend \
-           --hostname mail.c-eee.org \
-           -p 25:25 \
-           -p 80:80 \
-           -p 110:110 \
-           -p 143:143 \
-           -p 443:443 \
-           -p 465:465 \
-           -p 587:587 \
-           -p 993:993 \
-           -p 995:995 \
-           -p 5222:5222 \
-           -p 5223:5223 \
-           -p 7071:7071 \
-           --volume zimbra-data:/data \
-           --cap-add NET_ADMIN \
-           --cap-add SYS_ADMIN \
-           --cap-add SYS_PTRACE \
-           --security-opt apparmor=unconfined \
-           c-eee.org/zimbra \
-           run
-```
+  ```bash
+  docker run --name zimbra \ 
+             --detach \
+             --rm \
+             --ip6=2001:xxxx:xxxx:xxxx::2 \
+             --network frontend \
+             --hostname mail.c-eee.org \
+             -p 25:25 \
+             -p 80:80 \
+             -p 110:110 \
+             -p 143:143 \
+             -p 443:443 \
+             -p 465:465 \
+             -p 587:587 \
+             -p 993:993 \
+             -p 995:995 \
+             -p 5222:5222 \
+             -p 5223:5223 \
+             -p 7071:7071 \
+             --volume zimbra-data:/data \
+             --cap-add NET_ADMIN \
+             --cap-add SYS_ADMIN \
+             --cap-add SYS_PTRACE \
+             --security-opt apparmor=unconfined \
+             c-eee.org/zimbra \
+             run
+  ```
 
 ## Maintenance
 
@@ -199,36 +200,36 @@ docker run --name zimbra \
 
 - Open the configuration file:
 
-```bash
- nano /etc/apt/apt.conf.d/20auto-upgrades
-```
+  ```bash
+  nano /etc/apt/apt.conf.d/20auto-upgrades
+  ```
 
 - Add the following configuration parameter:
   
- ```bash
- APT::Periodic::Unattended-Upgrade "0"; 
- ```
+  ```bash
+  APT::Periodic::Unattended-Upgrade "0"; 
+  ```
 
 4. To manually install updates, launch a shell in the container using the following command:
 
-```bash 
-docker exec -it zimbra /bin/bash
-```
+   ```bash 
+   docker exec -it zimbra /bin/bash
+   ```
 
 5.  The entire Ubuntu installation is kept in `/data`, so you need to `chroot` to dive into the environment:
 
-```bash
-chroot /data /bin/bash
-```
+    ```bash
+    chroot /data /bin/bash
+    ```
 
 You can now deal with the installation as you would a conventional Ubuntu installation, with some limitations. Some kernel calls are restricted by the default `seccomp` profile in Docker, therefore you may need to alter this. Furthermore,`systemd` is broken, thus you must use init scripts to `start/stop` services.
 
 5. First and foremost, you should keep your Ubuntu installation up to date by running the following tasks on a regular basis:
 
-```bash
-apt-get update
-apt-get upgrade
-```
+   ```bash
+   apt-get update
+   apt-get upgrade
+   ```
 
 6. If a new Zimbra installation is available, you must manually update it to ensure that any adjustments made since the first setup are appropriately re-applied. A new image that installs a new version of Zimbra **WILL NOT** upgrade an existing installation.
 
