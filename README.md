@@ -112,8 +112,21 @@ docker volume create zimbra-data
 - Clone the reposotory to you Ubuntu 20.04 doker host
 
   ```bash
-  git clone https://github.com/ceeedevops/docker-zimbra-9.0.0-C-EEE.git
+  git clone https://github.com/ceeedevops/docker-zimbra-9.0.0-c-eee.git
   ```
+  
+-  Access the repository directory
+
+   ```bash
+   cd docker-zimbra-9.0.0-c-eee
+   ```
+
+- Build the  container
+
+  ```bash
+  ,/build.sh
+  ```
+-  Start the container
 
   ```bash
   docker run -it \
@@ -141,7 +154,6 @@ docker volume create zimbra-data
              c-eee.org/zimbra \
              run-and-enter
   ```
-
 - To function correctly, the container requires a few more characteristics. 
 
 - To configure network interfaces and the iptables firewall, the `NET_ADMIN` capability is required. 
