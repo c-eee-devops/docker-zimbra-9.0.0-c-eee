@@ -189,11 +189,12 @@ docker volume create zimbra-data
 - Output:
 
   ```bash
-  Downloading Zimbra...
-  2023-10-18 14:06:03--  https://gitlab.com/c-eee.org/zimbra_c-eee/-/raw/main/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs- 
-  9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz
-  Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
-  Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
+  root@mail:/app# ./install-zimbra.sh
+
+Downloading Zimbra...
+--2023-10-18 14:06:03--  https://gitlab.com/c-eee.org/zimbra_c-eee/-/raw/main/9/p33/UBUNTU20_64-KEPLER-900-20231010174750-FOSS-0033/zcs-9.0.0_GA_0033.UBUNTU20_64.20231010174750.tgz
+Resolving gitlab.com (gitlab.com)... 172.65.251.78, 2606:4700:90:0:f22e:fbec:5bed:a9b9
+Connecting to gitlab.com (gitlab.com)|172.65.251.78|:443... connected.
 HTTP request sent, awaiting response... 200 OK
 Length: 256776246 (245M) [application/x-gtar]
 Saving to: 'zcs.tgz'
@@ -331,7 +332,14 @@ AGREEMENT, THEN DO NOT DOWNLOAD, INSTALL OR USE THE PRODUCT.
 License Terms for this Zimbra Collaboration Suite Software:
 https://www.zimbra.com/license/zimbra-public-eula-2-6.html
 ----------------------------------------------------------------------
+
+
+
 Do you agree with the terms of the software license agreement? [N] y
+
+
+
+
 
 Use Zimbra's package repository [Y] y
 
@@ -355,6 +363,7 @@ Found zimbra-memcached (repo)
 Found zimbra-proxy (local)
 Found zimbra-drive (repo)
 Found zimbra-imapd (local)
+
 
 Select the packages to install
 
@@ -518,9 +527,327 @@ Setting defaults...
 
 DNS ERROR resolving MX for mail.c-eee.org
 It is suggested that the domain name have an MX record configured in DNS
-Change domain name? [Yes]
+Change domain name? [Yes] yes
+Create domain: [mail.c-eee.org] c-eee.org
+        MX: mail.c-eee.org (192.168.0.2)
 
-```
+        Interface: 127.0.0.1
+        Interface: 192.168.0.2
+done.
+Checking for port conflicts
+
+Main menu
+
+   1) Common Configuration:
+   2) zimbra-ldap:                             Enabled
+   3) zimbra-logger:                           Enabled
+   4) zimbra-mta:                              Enabled
+   5) zimbra-snmp:                             Enabled
+   6) zimbra-store:                            Enabled
+        +Create Admin User:                    yes
+        +Admin user to create:                 admin@c-eee.org
+******* +Admin Password                        UNSET
+        +Anti-virus quarantine user:           virus-quarantine.xusm_cvic@c-eee.org
+        +Enable automated spam training:       yes
+        +Spam training user:                   spam.hcyq2qay@c-eee.org
+        +Non-spam(Ham) training user:          ham.drmalnzz9@c-eee.org
+        +SMTP host:                            mail.c-eee.org
+        +Web server HTTP port:                 8080
+        +Web server HTTPS port:                8443
+        +Web server mode:                      https
+        +IMAP server port:                     7143
+        +IMAP server SSL port:                 7993
+        +POP server port:                      7110
+        +POP server SSL port:                  7995
+        +Use spell check server:               yes
+        +Spell server URL:                     http://mail.c-eee.org:7780/aspell.php
+        +Enable version update checks:         TRUE
+        +Enable version update notifications:  TRUE
+        +Version update notification email:    admin@c-eee.org
+        +Version update source email:          admin@c-eee.org
+        +Install mailstore (service webapp):   yes
+        +Install UI (zimbra,zimbraAdmin webapps): yes
+
+   7) zimbra-spell:                            Enabled
+   8) zimbra-proxy:                            Enabled
+   9) Default Class of Service Configuration:
+   s) Save config to file
+   x) Expand menu
+   q) Quit
+
+Address unconfigured (**) items  (? - help) 6
+
+
+Store configuration
+
+   1) Status:                                  Enabled
+   2) Create Admin User:                       yes
+   3) Admin user to create:                    admin@c-eee.org
+** 4) Admin Password                           UNSET
+   5) Anti-virus quarantine user:              virus-quarantine.xusm_cvic@c-eee.org
+   6) Enable automated spam training:          yes
+   7) Spam training user:                      spam.hcyq2qay@c-eee.org
+   8) Non-spam(Ham) training user:             ham.drmalnzz9@c-eee.org
+   9) SMTP host:                               mail.c-eee.org
+  10) Web server HTTP port:                    8080
+  11) Web server HTTPS port:                   8443
+  12) Web server mode:                         https
+  13) IMAP server port:                        7143
+  14) IMAP server SSL port:                    7993
+  15) POP server port:                         7110
+  16) POP server SSL port:                     7995
+  17) Use spell check server:                  yes
+  18) Spell server URL:                        http://mail.c-eee.org:7780/aspell.php
+  19) Enable version update checks:            TRUE
+  20) Enable version update notifications:     TRUE
+  21) Version update notification email:       admin@c-eee.org
+  22) Version update source email:             admin@c-eee.org
+  23) Install mailstore (service webapp):      yes
+  24) Install UI (zimbra,zimbraAdmin webapps): yes
+
+Select, or 'r' for previous menu [r] 4
+
+Password for admin@c-eee.org (min 6 characters): [tmBpZmth3] M1h1ntal3
+
+Store configuration
+
+   1) Status:                                  Enabled
+   2) Create Admin User:                       yes
+   3) Admin user to create:                    admin@c-eee.org
+   4) Admin Password                           set
+   5) Anti-virus quarantine user:              virus-quarantine.xusm_cvic@c-eee.org
+   6) Enable automated spam training:          yes
+   7) Spam training user:                      spam.hcyq2qay@c-eee.org
+   8) Non-spam(Ham) training user:             ham.drmalnzz9@c-eee.org
+   9) SMTP host:                               mail.c-eee.org
+  10) Web server HTTP port:                    8080
+  11) Web server HTTPS port:                   8443
+  12) Web server mode:                         https
+  13) IMAP server port:                        7143
+  14) IMAP server SSL port:                    7993
+  15) POP server port:                         7110
+  16) POP server SSL port:                     7995
+  17) Use spell check server:                  yes
+  18) Spell server URL:                        http://mail.c-eee.org:7780/aspell.php
+  19) Enable version update checks:            TRUE
+  20) Enable version update notifications:     TRUE
+  21) Version update notification email:       admin@c-eee.org
+  22) Version update source email:             admin@c-eee.org
+  23) Install mailstore (service webapp):      yes
+  24) Install UI (zimbra,zimbraAdmin webapps): yes
+
+Select, or 'r' for previous menu [r] 5
+
+Anti-virus quarantine user: [virus-quarantine.xusm_cvic@c-eee.org] virus@c-eee.org
+
+Store configuration
+
+   1) Status:                                  Enabled
+   2) Create Admin User:                       yes
+   3) Admin user to create:                    admin@c-eee.org
+   4) Admin Password                           set
+   5) Anti-virus quarantine user:              virus@c-eee.org
+   6) Enable automated spam training:          yes
+   7) Spam training user:                      spam.hcyq2qay@c-eee.org
+   8) Non-spam(Ham) training user:             ham.drmalnzz9@c-eee.org
+   9) SMTP host:                               mail.c-eee.org
+  10) Web server HTTP port:                    8080
+  11) Web server HTTPS port:                   8443
+  12) Web server mode:                         https
+  13) IMAP server port:                        7143
+  14) IMAP server SSL port:                    7993
+  15) POP server port:                         7110
+  16) POP server SSL port:                     7995
+  17) Use spell check server:                  yes
+  18) Spell server URL:                        http://mail.c-eee.org:7780/aspell.php
+  19) Enable version update checks:            TRUE
+  20) Enable version update notifications:     TRUE
+  21) Version update notification email:       admin@c-eee.org
+  22) Version update source email:             admin@c-eee.org
+  23) Install mailstore (service webapp):      yes
+  24) Install UI (zimbra,zimbraAdmin webapps): yes
+
+Select, or 'r' for previous menu [r] 7
+
+Spam training user: [spam.hcyq2qay@c-eee.org] spam@c-eee.org
+
+Store configuration
+
+   1) Status:                                  Enabled
+   2) Create Admin User:                       yes
+   3) Admin user to create:                    admin@c-eee.org
+   4) Admin Password                           set
+   5) Anti-virus quarantine user:              virus@c-eee.org
+   6) Enable automated spam training:          yes
+   7) Spam training user:                      spam@c-eee.org
+   8) Non-spam(Ham) training user:             ham.drmalnzz9@c-eee.org
+   9) SMTP host:                               mail.c-eee.org
+  10) Web server HTTP port:                    8080
+  11) Web server HTTPS port:                   8443
+  12) Web server mode:                         https
+  13) IMAP server port:                        7143
+  14) IMAP server SSL port:                    7993
+  15) POP server port:                         7110
+  16) POP server SSL port:                     7995
+  17) Use spell check server:                  yes
+  18) Spell server URL:                        http://mail.c-eee.org:7780/aspell.php
+  19) Enable version update checks:            TRUE
+  20) Enable version update notifications:     TRUE
+  21) Version update notification email:       admin@c-eee.org
+  22) Version update source email:             admin@c-eee.org
+  23) Install mailstore (service webapp):      yes
+  24) Install UI (zimbra,zimbraAdmin webapps): yes
+
+Select, or 'r' for previous menu [r] 8
+
+Ham training user: [ham.drmalnzz9@c-eee.org] ham@c-eee.org
+
+Store configuration
+
+   1) Status:                                  Enabled
+   2) Create Admin User:                       yes
+   3) Admin user to create:                    admin@c-eee.org
+   4) Admin Password                           set
+   5) Anti-virus quarantine user:              virus@c-eee.org
+   6) Enable automated spam training:          yes
+   7) Spam training user:                      spam@c-eee.org
+   8) Non-spam(Ham) training user:             ham@c-eee.org
+   9) SMTP host:                               mail.c-eee.org
+  10) Web server HTTP port:                    8080
+  11) Web server HTTPS port:                   8443
+  12) Web server mode:                         https
+  13) IMAP server port:                        7143
+  14) IMAP server SSL port:                    7993
+  15) POP server port:                         7110
+  16) POP server SSL port:                     7995
+  17) Use spell check server:                  yes
+  18) Spell server URL:                        http://mail.c-eee.org:7780/aspell.php
+  19) Enable version update checks:            TRUE
+  20) Enable version update notifications:     TRUE
+  21) Version update notification email:       admin@c-eee.org
+  22) Version update source email:             admin@c-eee.org
+  23) Install mailstore (service webapp):      yes
+  24) Install UI (zimbra,zimbraAdmin webapps): yes
+
+Select, or 'r' for previous menu [r] r
+
+Main menu
+
+   1) Common Configuration:
+   2) zimbra-ldap:                             Enabled
+   3) zimbra-logger:                           Enabled
+   4) zimbra-mta:                              Enabled
+   5) zimbra-snmp:                             Enabled
+   6) zimbra-store:                            Enabled
+   7) zimbra-spell:                            Enabled
+   8) zimbra-proxy:                            Enabled
+   9) Default Class of Service Configuration:
+   s) Save config to file
+   x) Expand menu
+   q) Quit
+
+*** CONFIGURATION COMPLETE - press 'a' to apply
+Select from menu, or press 'a' to apply config (? - help) a
+Save configuration data to a file? [Yes] yes
+Save config in file: [/opt/zimbra/config.12844]
+Saving config in /opt/zimbra/config.12844...done.
+The system will be modified - continue? [No] yes
+Operations logged to /tmp/zmsetup.20231018-141343.log
+Setting local config values...done.
+Initializing core config...Setting up CA...done.
+Deploying CA to /opt/zimbra/conf/ca ...done.
+Creating SSL zimbra-store certificate...done.
+Creating new zimbra-ldap SSL certificate...done.
+Creating new zimbra-mta SSL certificate...done.
+Creating new zimbra-proxy SSL certificate...done.
+Installing mailboxd SSL certificates...done.
+Installing MTA SSL certificates...done.
+Installing LDAP SSL certificate...done.
+Installing Proxy SSL certificate...done.
+Initializing ldap...done.
+Setting replication password...done.
+Setting Postfix password...done.
+Setting amavis password...done.
+Setting nginx password...done.
+Setting BES searcher password...done.
+Creating server entry for mail.c-eee.org...done.
+Setting Zimbra IP Mode...done.
+Saving CA in ldap...done.
+Saving SSL Certificate in ldap...done.
+Setting spell check URL...done.
+Setting service ports on mail.c-eee.org...done.
+Setting zimbraFeatureTasksEnabled=TRUE...done.
+Setting zimbraFeatureBriefcasesEnabled=TRUE...done.
+Checking current setting of zimbraReverseProxyAvailableLookupTargets
+Querying LDAP for other mailstores
+Searching LDAP for reverseProxyLookupTargets...done.
+Adding mail.c-eee.org to zimbraReverseProxyAvailableLookupTargets
+Updating zimbraLDAPSchemaVersion to version '1688631200'
+Setting TimeZone Preference...done.
+Disabling strict server name enforcement on mail.c-eee.org...done.
+Initializing mta config...done.
+Setting services on mail.c-eee.org...done.
+Adding mail.c-eee.org to zimbraMailHostPool in default COS...done.
+Creating domain c-eee.org...done.
+Setting default domain name...done.
+Creating domain c-eee.org...already exists.
+Creating admin account admin@c-eee.org...done.
+Creating root alias...done.
+Creating postmaster alias...done.
+Creating user spam@c-eee.org...done.
+Creating user ham@c-eee.org...done.
+Creating user virus@c-eee.org...done.
+Setting spam training and Anti-virus quarantine accounts...done.
+Initializing store sql database...done.
+Setting zimbraSmtpHostname for mail.c-eee.org...done.
+Configuring SNMP...done.
+Setting up syslog.conf...done.
+Setting java options...done.
+Starting servers...done.
+Enabling jetty logging...done.
+Installing common zimlets...
+        com_zimbra_srchhighlighter...done.
+        com_zimbra_gotourl...done.
+        com_zimbra_proxy_config...done.
+        com_zimbra_phone...done.
+        com_zimbra_attachmail...done.
+        com_zextras_chat_open...done.
+        com_zimbra_viewmail...done.
+        com_zimbra_ymemoticons...done.
+        com_zimbra_mailarchive...done.
+        com_zimbra_date...done.
+        com_zimbra_adminversioncheck...done.
+        com_zimbra_url...done.
+        com_zimbra_cert_manager...done.
+        com_zimbra_bulkprovision...done.
+        com_zimbra_email...done.
+        com_zimbra_webex...done.
+        com_zextras_drive_open...done.
+        com_zimbra_tooltip...done.
+        com_zimbra_attachcontacts...done.
+Finished installing common zimlets.
+Restarting mailboxd...done.
+Creating galsync account for default domain...done.
+
+You have the option of notifying Zimbra of your installation.
+This helps us to track the uptake of the Zimbra Collaboration Server.
+The only information that will be transmitted is:
+        The VERSION of zcs installed (9.0.0_GA_0033_UBUNTU20_64)
+        The ADMIN EMAIL ADDRESS created (admin@c-eee.org)
+
+Notify Zimbra of your installation? [Yes] yes
+Notifying Zimbra of installation via http://www.zimbra.com/cgi-bin/notify.cgi?VER=9.0.0_GA_0033_UBUNTU20_64&MAIL=admin@c-eee.org
+
+ERROR: Notification failed
+Checking if the NG started running...done.
+Setting up zimbra crontab...done.
+
+
+Moving /tmp/zmsetup.20231018-141343.log to /opt/zimbra/log
+
+
+Configuration complete - press return to exit
+  ```
   
 
 
