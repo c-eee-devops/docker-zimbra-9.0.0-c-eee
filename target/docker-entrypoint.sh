@@ -24,7 +24,6 @@ function prepare_chroot
     cp /app/tls-cert-updater.py $ZIMBRA_ENVIRONMENT_PATH/app/
     chmod 750 $ZIMBRA_ENVIRONMENT_PATH/app/control-zimbra.sh
     chmod 755 $ZIMBRA_ENVIRONMENT_PATH/app/tls-cert-updater.py
-    mount -o remount,exec,dev $ZIMBRA_ENVIRONMENT_PATH
 }
 
 function shutdown_chroot
@@ -44,7 +43,6 @@ function setup_environment
     # (may contain mounted TLS certificates, so classical emptiness check cannot be used...)
     if [ ! -f "$ZIMBRA_ENVIRONMENT_PATH/etc/hosts" ]; then
 
-        mount -o remount,exec,dev $ZIMBRA_ENVIRONMENT_PATH
         echo "Installing minimalistic Ubuntu 20.04 LTS (focal)..."
         debootstrap --variant=minbase --arch=amd64 focal /data http://archive.ubuntu.com/ubuntu/
 
