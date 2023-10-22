@@ -10,7 +10,6 @@ CONTAINER_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut
 
 function prepare_chroot
 {
-    mount  mount -o remount,exec,dev /dev
     mount -o bind /dev $ZIMBRA_ENVIRONMENT_PATH/dev
     mount -o bind /dev/pts $ZIMBRA_ENVIRONMENT_PATH/dev/pts
     mount -t sysfs /sys $ZIMBRA_ENVIRONMENT_PATH/sys
@@ -25,6 +24,7 @@ function prepare_chroot
     cp /app/tls-cert-updater.py $ZIMBRA_ENVIRONMENT_PATH/app/
     chmod 750 $ZIMBRA_ENVIRONMENT_PATH/app/control-zimbra.sh
     chmod 755 $ZIMBRA_ENVIRONMENT_PATH/app/tls-cert-updater.py
+    mount -o remount,exec,dev /data
 }
 
 function shutdown_chroot
