@@ -10,8 +10,8 @@ CONTAINER_IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut
 
 function prepare_chroot
 {
-    mount -o bind /dev $ZIMBRA_ENVIRONMENT_PATH/dev
-    mount -o bind /dev/pts $ZIMBRA_ENVIRONMENT_PATH/dev/pts
+    mount -o bind,exec,dev /dev $ZIMBRA_ENVIRONMENT_PATH/dev
+    mount -o bind,exec,dev /dev/pts $ZIMBRA_ENVIRONMENT_PATH/dev/pts
     mount -t sysfs /sys $ZIMBRA_ENVIRONMENT_PATH/sys
     mount -t proc /proc $ZIMBRA_ENVIRONMENT_PATH/proc
     rm -f $ZIMBRA_ENVIRONMENT_PATH/etc/mtab
