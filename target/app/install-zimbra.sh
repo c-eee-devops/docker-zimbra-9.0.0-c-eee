@@ -74,6 +74,21 @@ sudo -u zimbra -- /opt/zimbra/bin/zmlocalconfig -e zimbra_swatch_total_threshold
 # ----------------------------------------------------------------------------------------------------------
 sudo -u zimbra -- /opt/zimbra/bin/zmauditswatchctl start
 
+echo 
+echo "Installing Zextras Theme..."
+mkdir -p /install/zextras
+cd /install/zextras
+wget  https://github.com/ZeXtras/zextras-theme/archive/master.zip
+unzip master.zip
+mv zextras-theme-master zextras
+zip -r zextras.zip zextras
+mv zextras.zip /tmp
+chown zimbra:zimbra /tmp/zextras.zip
+sed -i '/+ZimbraInstalledSkin/d' /opt/zimbra/bin/zmskindeploy
+sed -i 's/harmony/zextras/g' /opt/zimbra/jetty/etc/zimbra.web.xml.in
+sudo -u zimbra /opt/zimbra/bin/zmskindeploy  /tmp/zextras.zip
+sudo -u zimbra /opt/zimbra/bin/zmmailboxdctl restart
+
 echo
 echo "Removing Zimbra installation files..."
 cd /
