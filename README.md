@@ -25,7 +25,8 @@ You must first configure the Docker repository before installing Docker Engine f
    sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
    # Add the repository to Apt sources:
-   echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg]  https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg]  https://download.docker.com/linux/ubuntu 
+   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
    sudo apt-get update
    ```
 
@@ -68,7 +69,7 @@ This section explains how to start the Zimbra container on a standard Docker hos
 
 - Any IPv6-enabled server nowadays has at least a /64 subnet assigned, thus any single container can have its own IPv6 address without the need for network address translation (NAT). As a result, you should select an IPv6 subnet that is part of the subnet that your server is assigned to.
   
-- Docker advises using a subnet of at least /80 so that it can assign IP addresses by ORing the container's (virtual) MAC address with the provided subnet.
+- Docker advises using a subnet of at least /80 so that it can assign IP addresses by using the container's (virtual) MAC address with the provided subnet.
 
   ```bash
   docker network create -d bridge \
@@ -76,7 +77,7 @@ This section explains how to start the Zimbra container on a standard Docker hos
   ```
 ### Step 2 - Create a Volume for the Zimbra Container
 
-The zimbra container installs a minimalistic Ubuntu 20.04 LTS and Zimbra onto a docker volume. You can create a named volume using the following command:
+The Zimbra container installs a minimalistic Ubuntu 20.04 LTS and Zimbra onto a docker volume. You can create a named volume using the following command:
 
 ```bash
 docker volume create zimbra-data
@@ -102,7 +103,7 @@ docker volume create zimbra-data
 
 - Because the `IPv4` address through which the container would be publicly accessible is really assigned to the docker host, the installation process will complain about a DNS problem. Ignore the warning and continue. It will eventually function.
 
-- Clone the reposotory to you Ubuntu 20.04 doker host
+- Clone the repository to your Ubuntu 20.04 docker host
 
   ```bash
   git clone https://github.com/ceeedevops/docker-zimbra-9.0.0-c-eee.git
