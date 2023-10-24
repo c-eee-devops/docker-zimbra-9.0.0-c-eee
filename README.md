@@ -72,10 +72,7 @@ This section explains how to start the Zimbra container on a standard Docker hos
 
   ```bash
   docker network create -d bridge \
-    --subnet 192.168.0.0/24 \
-    --subnet 2001:xxxx:xxxx:xxxx::/80 \
-    --ipv6 \
-  frontend
+    --subnet 192.168.0.0/24  frontend
   ```
 ### Step 2 - Create a Volume for the Zimbra Container
 
@@ -127,7 +124,6 @@ docker volume create zimbra-data
   ```bash
   docker run -it \
              --rm \
-             --ip6=2001:xxxx:xxxx:xxxx::2 \
              --network frontend \
              --hostname mail.c-eee.org \
              -p 25:25 \
