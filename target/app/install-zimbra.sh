@@ -91,7 +91,21 @@ sudo -u zimbra /opt/zimbra/bin/zmmailboxdctl restart
 echo "Installing zextras theme is completed"
 
 echo
+echo "Installing z-push for Zimbra"
+#
+echo "installing  php and php dependancies for z-push..."
+#
+sudo apt -y install php php-cli php-soap php-mbstring
+#
+echo "Installing php dependancies for backends..."
+sudo apt -y install php-imap php-curl libawl-php php-curl php-xml php-ldap
+echo "Creating folder required for z-push..."
+sudo mkdir /var/lib/z-push /var/log/z-push
+sudo chmod 755 /var/lib/z-push /var/log/z-push
+echo
 echo "Removing Zimbra installation files..."
+
+
 cd /
 rm -Rv /install
 
