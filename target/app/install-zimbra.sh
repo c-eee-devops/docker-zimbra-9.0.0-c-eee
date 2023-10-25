@@ -92,17 +92,24 @@ echo "Installing zextras theme is completed"
 
 echo
 echo "Installing z-push for Zimbra"
-#
-echo "installing  php and php dependancies for z-push..."
-#
+sudo mkdir -p /install/z-push
+cd /install/z-push
+# installing  php and php dependancies for z-push...
 sudo apt -y install php php-cli php-soap php-mbstring
-#
-echo "Installing php dependancies for backends..."
+# Installing php dependancies for backends...
 sudo apt -y install php-imap php-curl libawl-php php-curl php-xml php-ldap
-echo "Creating folder required for z-push..."
+# Creating folder required for z-push..."
 sudo mkdir /var/lib/z-push /var/log/z-push
 sudo chmod 755 /var/lib/z-push /var/log/z-push
+# Download the latest z-push release from github
+Z-PUSH_VER=2.7.1
+wget -O z-push.tar.gz https://github.com/Z-Hub/Z-Push/archive/refs/tags/$Z-PUSH_VER.tar.gz
+tar xzvf z-push.tar.gz 
+sudo cp -r Z-Push-$Z-PUSH_VER/src/* /var/lib/z-push
+
 echo
+
+
 echo "Removing Zimbra installation files..."
 
 
