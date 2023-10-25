@@ -1,4 +1,4 @@
-#!/bin/bash
+ch#!/bin/bash
 
 set -e
 
@@ -88,6 +88,7 @@ sed -i '/+ZimbraInstalledSkin/d' /opt/zimbra/bin/zmskindeploy
 sed -i 's/harmony/zextras/g' /opt/zimbra/jetty/etc/zimbra.web.xml.in
 sudo -u zimbra /opt/zimbra/bin/zmskindeploy  /tmp/zextras.zip
 sudo -u zimbra /opt/zimbra/bin/zmmailboxdctl restart
+echo "Installing zextras theme is completed"
 
 echo
 echo "Removing Zimbra installation files..."
