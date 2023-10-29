@@ -108,14 +108,23 @@ mkdir /var/lib/z-push /var/log/z-push
 chmod 755 /var/lib/z-push /var/log/z-push
 chown zimbra:zimbra /var/lib/z-push /var/log/z-push
 # Save z-push folder on /opt/
-
-
-
-
+cd zcs-zpush/
+cp -rvf z-push /opt/
+# Create symlink
+ln -sf /opt/z-push /opt/zimbra/jetty/webapps/
+# Save php script on /usr/bin
+cp php-cgi-fix.sh /usr/bin/php-cgi-fix.sh
+chmod +x /usr/bin/php-cgi-fix.sh
+# Change publicHostname domain on your Zimbra into localhost
+su - zimbra -c 'zmprov md yourzimbradomain.tld zimbraPublicServiceHostname localhost zimbraPublicServiceProtocol https'
+# Backup and replace jetty.xml.in
+cp /opt/zimbra/jetty/etc/jetty.xml.in /opt/zimbra/jetty/etc/jetty.xml.in.backup
+cp jetty.xml.in-for-zcs-9 /opt/zimbra/jetty/etc/jetty.xml.in
+chown zimbra.zimbra /opt/zimbra/jetty/etc/jetty.xml.in
+#  Add zpush.ini into php
+cp zpush.ini /etc/php/7.4/mods-available/10-zpush.ini
 
 echo "Removing Zimbra installation files..."
-
-
 cd /
 rm -Rv /install
 
