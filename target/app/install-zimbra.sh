@@ -101,13 +101,16 @@ sudo apt -y install php-imap php-curl libawl-php php-curl php-xml php-ldap
 # Creating folder required for z-push..."
 sudo mkdir /var/lib/z-push /var/log/z-push
 sudo chmod 755 /var/lib/z-push /var/log/z-push
-# Download the latest z-push release from github
-Z-PUSH_VER=2.7.1
-wget -O z-push.tar.gz https://github.com/Z-Hub/Z-Push/archive/refs/tags/$Z-PUSH_VER.tar.gz
-tar xzvf z-push.tar.gz 
-sudo cp -r Z-Push-$Z-PUSH_VER/src/* /var/lib/z-push
+# Clone the latest zcs-push release from github
+git clone https://github.com/c-eee-devops/zcs-zpush.git
+# Create folder for log
+mkdir /var/lib/z-push /var/log/z-push
+chmod 755 /var/lib/z-push /var/log/z-push
+chown zimbra:zimbra /var/lib/z-push /var/log/z-push
+# Save z-push folder on /opt/
 
-echo
+
+
 
 
 echo "Removing Zimbra installation files..."
