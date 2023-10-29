@@ -35,6 +35,8 @@ apt-get -y install \
     rsyslog \
     ssh \
     sudo \
+    git \
+    zip \
     unattended-upgrades \
     wget
 
